@@ -2,6 +2,7 @@
 
 
 
+
 ## サイト概要  
 討論したいお題を投稿でき、賛成・反対だけでなく、どっちでもない派の意見も聞いてみたい人のコミュニティーサイト
 
@@ -17,16 +18,17 @@ TwitterやFacebookなどのサイトで色々な意見が述べられている�
 ### 主な利用シーン  
 投稿済みのお題にたいして、意見や票を投稿したり、自分で考えたお題を投稿して他のユーザから票や意見を集めたりすることができる。 
 
-## 設計書
-
+## ER図
+![ER図_docchi drawio](https://user-images.githubusercontent.com/106795266/182154157-d71028df-85b3-4b6a-84ed-62d6cfb74e90.png)
  
   
 ## 開発環境  
 - OS：Windows 10
 - 言語：HTML, CSS, JavaScript, Ruby 3.1.2p20 (2022-04-12 revision 4491bb740a) [x86_64-linux]
-- フレームワーク：Ruby on Rails 6.1.6.1 
+- フレームワーク：Ruby on Rails 6.1.6.1
+- Gem: devise, bootstrap
 - IDE：Cloud9
-- Gem: bootstrap
+
 
 ## 使用素材
 
