@@ -26,7 +26,7 @@
 - 自身の興味あるお題(話題)を閲覧したいとき
 
 ## ER図
-![ER図_docchi drawio](https://user-images.githubusercontent.com/106795266/182377606-50ecdd10-ff16-469d-8412-fe88f8787999.png)
+![ER図_docchi drawio](https://user-images.githubusercontent.com/106795266/182613109-5354452b-67dd-4301-ab8d-61b4a295c5a8.png)
 
   
 ## 開発環境  
