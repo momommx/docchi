@@ -36,6 +36,3 @@
 - Gem: devise, bootstrap
 - IDE：Cloud9
 
-
-## 使用素材
-
