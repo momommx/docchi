@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   sessions: 'public/sessions'
   }
   
-  root to: 'homes#top'  
+  root to: 'public/homes#top'  
   
   scope :public do   # scopeメソッドを用いて、Prefixのpublicのみを消す。
     resources :topics, only: [:index, :show, :new] do
