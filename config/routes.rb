@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   root to: 'public/homes#top'  
   
   namespace :public do   
-    resources :topics, only: [:index, :show, :new] do
+    resources :topics, only: [:index, :show, :new, :create, :destroy] do
       resource  :favorites, only: [:create, :destroy]
       resources :answers,   only: [:create, :destroy]
     end

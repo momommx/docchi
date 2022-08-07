@@ -1,1 +1,19 @@
 public/topics/index.html.erb
+<div class="container">
+  <div class="row">
+    <div class="row">
+      <%= link_to 'お題を作る', new_public_topic_path, class: "btn btn-success" %>
+    </div>
+    
+    <div class='container px-5 px-sm-0'>
+      <div class='row'>
+        <div class='col-md-8 offset-md-1'>
+          <h2>お題一覧</h2>
+          <%#= link_to '新しい順', books_path(latest: "true") %> 
+          | <%#= link_to '評価の高い順', books_path(star_count: "true") %>
+          <%= render 'index', topics: @topics %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

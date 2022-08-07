@@ -1,0 +1,34 @@
+<p>public/topics/new.html.erb</p>
+<div class="container">
+  <div class="mt-4">
+    <h4><span style="background-color: beige">お題を作る！</span></h4><br>
+    
+    <%= form_with model: @topic, url: public_topics_path, method: :post, local: true do |f| %>
+      
+      <div class="form-group row">
+        <%= f.label :topic_title, "お題" %>&emsp;&emsp;&nbsp;
+        <%= f.text_field :topic_title, :size=>"70", placeholder: "賛成/反対 または A/B かで答えられるお題を書いてください。" %>
+      </div> 
+      
+      <div class="form-group row">
+        <%= f.label :option1, "選択肢１" %>&nbsp;
+        <%= f.text_field :option1, :size=>"40" %>派
+      </div> 
+      
+      <div class="form-group row">
+        <%= f.label :option2, "選択肢２" %>&nbsp;
+        <%= f.text_field :option2, :size=>"40" %>派
+      </div> 
+      
+      <div class="form-group row">
+        <%= f.label :genre, "お題のジャンル" %>
+        <%= f.collection_select :genre_id, Genre.all, :id, :name %>
+      </div>  
+
+      <div class="text-center">
+        <%= f.submit 'お題を投稿する', class: "btn btn-outline-primary" %>
+      </div>
+      
+    <% end %>
+  </div>
+</div>
