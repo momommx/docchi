@@ -1,11 +1,12 @@
-<div class="container">public/registrations/new.html
+<div class="container">
+  <p>public/registrations/new.html</p>
 
   <h5 class="bg-light text-dark text-center" style="width:30%">
     初めて利用する方
   </h5>
-  <h5>
-    ※ユーザ登録なしでも閲覧は可能です。  
-  </h5>
+  <h9>
+    ※ユーザ登録なしでも閲覧可能です。<%= link_to "ゲストログイン", new_user_session_path %>からお入りください。
+  </h9>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "public/shared/error_messages", resource: resource %>
@@ -26,13 +27,13 @@
               <em>(<%= @minimum_password_length %>文字以上)</em>
             <% end %>            
           </td>
-          <td>&emsp;&emsp;&emsp;&nbsp;
+          <td>
             <%= f.password_field :password, autocomplete: "new-password" %>
           </td>
         </tr>
         <tr>
           <td>パスワード(確認用)</td>
-          <td>&emsp;&emsp;&emsp;&nbsp;
+          <td>
             <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
           </td>
         </tr>
@@ -51,7 +52,7 @@
   </h5>
   
   <h6>
-    <%= link_to "こちら", new_user_session_path %>　からログインしてください。
+    <%= link_to "こちら", new_user_session_path %>からログインしてください。
   </h6>
     
 </div>

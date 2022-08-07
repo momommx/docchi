@@ -1,12 +1,10 @@
-<div class="container">public/sessions/new.html
-  <h4>ログイン</h4><br>
+<div class="container">
   
-  <h5 class="bg-light text-dark text-center" style="width:30%">
+  <p>public/sessions/new.html</p>
+  
+  <h6 class="bg-light text-dark text-center" style="width:40%">
     ユーザーの方はこちらからログインしてください。
-  </h5>
-
-
-<h2>Log in</h2>
+  </h6><br>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
@@ -34,9 +32,9 @@
     </table>
   <% end %>
 
-  <h5 class="bg-light text-dark text-center" style="width:30%">
+  <h6 class="bg-light text-dark text-center" style="width:30%">
     初めて利用する方
-  </h5>
+  </h6>
   <br>
   <h6>
     <%= link_to "こちら", new_user_registration_path %>からユーザー登録を行ってください。
