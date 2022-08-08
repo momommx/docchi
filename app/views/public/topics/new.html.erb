@@ -1,7 +1,7 @@
 <p>public/topics/new.html.erb</p>
 <div class="container">
   <div class="mt-4">
-    <h4><span style="background-color: beige">お題を作る！</span></h4><br>
+    <h4><span class ="marker-red">お題を作る！</span></h4><br>
     
     <%= form_with model: @topic, url: public_topics_path, method: :post, local: true do |f| %>
       

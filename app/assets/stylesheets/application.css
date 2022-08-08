@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+ 
+ 
+.marker-red {
+    background: linear-gradient(transparent 60%, #f5c4c4 60%);
+    font-weight: 100;
+}
