@@ -1,6 +1,7 @@
 <table class='table table-hover table-inverse'>
   <thead>
     <tr>
+      <th>作成日</th>
       <th>お題</th>
       <th>ジャンル</th>
       <th>いいね</th>
@@ -13,7 +14,10 @@
     <% topics.each do |topic| %>
       <tr>
         <td>
-          <%= link_to topic.topic_title, public_topic_path(topic.user) do %>
+          <%= topic.created_at.strftime('%Y/%m/%d') %>
+        </td>
+        <td>
+          <%= link_to public_topic_path(topic.id) do %>
             <%= topic.topic_title %>
           <% end %>
         </td>
@@ -29,12 +33,13 @@
         </td>
 
         <td>
-            回答してみる！ボタン
+            回答してみる！
         </td>
-        <td>
-            削除ボタン
+        <td>          
+          <% if topic.user == current_user %>
+            <%= link_to '削除', public_topic_path(topic.id), method: :delete, class:"btn btn-outline-danger rounded-pill", data: {confirm: "ご意見も一緒に削除されますがよろしいですか？"} %>
+          <% end %>
         </td>
-        
       </tr>
     <% end %>
   </tbody>
