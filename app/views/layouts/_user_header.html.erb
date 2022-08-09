@@ -18,6 +18,15 @@
             <li class="nav-item" style="list-style: none">
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
             </li>
+            
+            <!-- 検索バー -->
+            <div class="search_form">
+              <%= form_with url: search_path, local: true, method: :get do |f| %>
+                <%= f.text_field :word, placeholder: "お題の検索"%>
+                <%= f.submit "検索", class: "btn btn-primary" %>
+              <% end %>
+            </div>
+            
         <% else %>
             <li class="nav-item" style="list-style: none">
               <%= link_to "お題一覧", public_topics_path, class: "nav-link text-light" %>
@@ -30,6 +39,12 @@
             </li>
           </ul>
         <% end %>
+        
+        
+        
+        
+        
+        
     </div>
   </nav>
 </header>

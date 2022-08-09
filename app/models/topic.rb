@@ -11,5 +11,9 @@ class Topic < ApplicationRecord
   def favorited_by?(user)
   　favorites.exists?(user_id: user.id)
   end
- 
+
+  def self.looks(word)
+    @topic = Topic.where("topic_title LIKE?","%#{word}%")
+  end
+  
 end
