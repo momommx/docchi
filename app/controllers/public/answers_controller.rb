@@ -1,13 +1,13 @@
 class Public::AnswersController < ApplicationController
-  #ログインしている場合、投稿&削除可能
   before_action :authenticate_user!
 
   def create
     @topic = Topic.find(params[:topic_id])
-    @answer = current_user.answers.new(answer_params)
-    @answer.topic_id = topic.id
-    @answer.save
-    redirect_to public_topic_path(topic.id)
+    @user = @topic.user
+    answer_content = current_user.answers.new(answer_params)
+    answer_content.topic_id = @topic.id
+    answer_content.save
+    redirect_to public_topic_path(topic)
   end
   
   def destroy
@@ -17,7 +17,7 @@ class Public::AnswersController < ApplicationController
   private
 
   def answer_params
-    params.require(:answer).permit(:answer)
+    params.require(:answer).permit(:answer_content)
   end
 
 end

@@ -23,6 +23,22 @@ class Public::TopicsController < ApplicationController
     @topic = Topic.find(params[:id])
     @user = @topic.user
     @answer = Answer.new
+    
+    # 回答欄のラジオボタンの分岐
+    if params[:answer][:select_option] == "0"  #どちらでもない派
+      @answer.option = current_user.option3  
+      @answer.save
+    elsif params[:answer][:select_option] == "1" #A派
+      @answer.option = current_user.option1
+      @answer.save
+    elsif params[:answer][:select_option] == "2" #B派
+      @answer.option = current_user.option2
+      @answer.save
+    else
+      @alart = "票が選択されていません。"
+    end
+      
+    # @answers = @answer.answer_content.page(params[:page]).per(7).reverse_order
   end
   
   def new
@@ -31,7 +47,10 @@ class Public::TopicsController < ApplicationController
   
   def create
     @topic = Topic.new(topic_params)
+    @topic.user_id = current_user.id
+
     if @topic.save
+      
       flash[:notice] = "あなたのお題ができました。" 
       redirect_to public_topic_path(@topic.id)
     else
@@ -53,5 +72,9 @@ class Public::TopicsController < ApplicationController
   def topic_params
     params.require(:topic).permit(:topic_title, :option1, :option2, :genre_id, :user_id)
   end
+  
+  # def answer_params
+    # params.require(:answer).permit(:option, :answer_content)
+  # end
   
 end

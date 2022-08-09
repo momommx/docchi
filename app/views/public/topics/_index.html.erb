@@ -30,11 +30,9 @@
         
         <td id="answer_count">
           <%#= render 'answers/answer_count', topic: topic %>
+          <%= topic.answers.count %>
         </td>
 
-        <td>
-            回答してみる！
-        </td>
         <td>          
           <% if topic.user == current_user %>
             <%= link_to '削除', public_topic_path(topic.id), method: :delete, class:"btn btn-outline-danger rounded-pill", data: {confirm: "ご意見も一緒に削除されますがよろしいですか？"} %>

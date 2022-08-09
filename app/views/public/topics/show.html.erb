@@ -1,76 +1,105 @@
 <p>public/topics/show.html.erb</p>
 <div class="container">
-    <div style="d-flex flex-column justify-content-start">
-      <table width="100%">
+  <div style="d-flex flex-column justify-content-start">
+    <table width="100%">
+      <thead>
+        <tr>
+          <th></th>
+          <th>お題</th>
+          <th>お題のジャンル</th>
+        </tr>          
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= link_to @user.name, public_user_path(@user.id) %>さん</td>
+          <td>
+            <span class="balloon2-left"><%= @topic.topic_title %></span>
+          </td>
+          <td><%= @topic.genre.name %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <%= @topic.option1 %>派：
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <%= @topic.option2 %>派：
+           </td>
+          <td></td>
+        </tr>        
+        <tr>
+          <td></td>
+          <td>
+            どちらでもない派：
+          </td>
+          <td></td>
+        </tr>        
+      </tbody>
+    </table><br>
+  
+    <div class="card">
+      <div class="card-header">
+        <strong>みなさんのご意見</strong>
+      </div>
+      <table class="table">
         <thead>
           <tr>
             <th></th>
-            <th>お題</th>
-            <th>お題のジャンル</th>
-          </tr>          
+            <th></th>
+            <th>回答者名</th>
+            <th></th>
+          </tr>
         </thead>
         <tbody>
           <tr>
-            <td><%= link_to @user.name, public_user_path(@user.id) %>さん</td>
-            <td>
-              <span class="balloon2-left"><%= @topic.topic_title %></span>
-            </td>
-            <td><%= @topic.genre.name %></td>
+            <td>画像(仮）</td>
+            <td><%= @answer.answer_content %></td>
+            <td><%#= @answer.user.name %></td>
+            <td>削除ボタン(仮）</td>
           </tr>
-          <tr>
-            <td></td>
-            <td>
-              <%= @topic.option1 %>派：
-            </td>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>
-              <%= @topic.option2 %>派：
-             </td>
-            <td></td>
-          </tr>        
-          <tr>
-            <td></td>
-            <td>
-              どちらでもない派：
-            </td>
-            <td></td>
-          </tr>        
         </tbody>
-      </table><br>
-    
-      <div class="card">
-        <div class="card-header">
-          <strong>みなさんのご意見</strong>
-        </div>
-        <table class="table">
-          <thead>
-            <tr>
-              <th></th>
-              <th></th>
-              <th>回答者名</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>画像(仮）</td>
-              <td><%= answer.answer %></td>
-              <td><%= answer.user.name %></td>
-              <td>削除ボタン(仮）</td>
-            </tr>
-          </tbody>
-        </table>
-        
-          <div>
-            <%= form_with model: [@topic, @answer], local: false do |f| %>
-             <%= f.text_area :answer, rows: '5', class:"w-100" %>
-             <%= f.submit "回答する" %>
-            <% end %>
-          </div>        
-      </div>
+      </table>
     </div>
+    
+    <h4 style="margin-top:20px"><span class="marker-red">回答してみる！</span></h4>
+    <%= form_with(model: [@topic, @answer], url: public_topic_answers_path(@topic.id), method: :post, local: true) do |f| %>
+      <table>
+        <tbody>
+          <ul class="list-unstyled">
+            <li><b>票を一つ選んでください。</b></li>
+            <li>
+              <ul><%= @alart %></ul>
+              <ul>
+              <%= f.radio_button :select_option, 1 %>
+              <%= @topic.option1 %>派
+              </ul>
+            </li>
+            <li>          
+              <ul>
+              <%= f.radio_button :select_option, 2 %>
+              <%= @topic.option2 %>派
+              </ul>          
+            </li>
+            <li>          
+              <ul>
+              <%= f.radio_button :select_option, 0 %>
+              どちらでもない派
+              </ul>          
+            </li><br>
+
+            <li><b>あなたのご意見</b></li>
+            <li>
+              <%= f.text_area :answer_content, rows: '5', placeholder: "ご意見はこちらに書いてください。", class:"w-100" %>
+              <%= f.submit "OK" %>
+            </li>
+          </ul>
+        </tbody>
+      <table>
+    <% end %>
+  </div>
 </div>
 
