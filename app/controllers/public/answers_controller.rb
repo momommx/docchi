@@ -20,6 +20,10 @@ class Public::AnswersController < ApplicationController
   end
   
   def destroy
+    @topic = Topic.find(params[:topic_id])
+    answer = @topic.answers.find(params[:id])
+    answer.destroy
+    redirect_to request.referer
   end
   
   
