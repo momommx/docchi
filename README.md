@@ -1,4 +1,4 @@
-# **Docchi**　～あなたはどっち派？
+# **Docchi**  ～あなたはどっち派？
 
 ### サイトテーマ  
 討論したいお題を投稿でき、賛成・反対だけでなく、どちらでもない派の意見も聞いてみたい人のためのコミュニティーサイト
@@ -33,6 +33,6 @@
 - OS：Windows 10
 - 言語：HTML, CSS, JavaScript, Ruby 3.1.2p20 (2022-04-12 revision 4491bb740a) [x86_64-linux]
 - フレームワーク：Ruby on Rails 6.1.6.1
-- Gem: devise, bootstrap, kaminari, net-smtp, net-imap, net-pop
+- Gem: devise, bootstrap, kaminari, net-smtp, net-imap, net-pop, FontAwesome
 - IDE：Cloud9
 
