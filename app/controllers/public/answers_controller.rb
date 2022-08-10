@@ -3,7 +3,7 @@ class Public::AnswersController < ApplicationController
 
   def create
     @topic = Topic.find(params[:topic_id])
-    @user = @topic.user
+    @user = current_user
     @answer = Answer.new(answer_params)
     
     @answer.user_id = @user.id

@@ -9,7 +9,6 @@ class Public::TopicsController < ApplicationController
     @user = current_user
     @topic = Topic.new
     @topics = Topic.all
-    
     #if params[:latest]
       #@topics = Topic.latest
     #elsif params[:old]

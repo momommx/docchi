@@ -20,10 +20,10 @@
             </li>
             
             <!-- 検索バー -->
-            <div class="search_form">
+            <div class="form-inline">
               <%= form_with url: search_path, local: true, method: :get do |f| %>
-                <%= f.text_field :word, placeholder: "お題の検索"%>
-                <%= f.submit "検索", class: "btn btn-primary" %>
+                <%= f.text_field :word, placeholder: "お題の検索", class: "form-control mr-sm-2 rounded-pill" %>
+                <%= f.submit "検索", class: "btn btn-outline-success rounded-pill my-2 my-sm-0" %>
               <% end %>
             </div>
             
