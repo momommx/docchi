@@ -15,26 +15,26 @@
           <td>
             <span class="balloon2-left"><%= @topic.topic_title %></span>
           </td>
-          <td><%= @topic.genre.name %></td>
+          <td><%= @topic.genre.name %>さん</td>
         </tr>
         <tr>
           <td></td>
           <td>
-            <%= @topic.option1 %>派：
+            <%= @topic.option1 %>派：<%= @count_a %>
           </td>
           <td></td>
         </tr>
         <tr>
           <td></td>
           <td>
-            <%= @topic.option2 %>派：
+            <%= @topic.option2 %>派：<%= @count_b %>
            </td>
           <td></td>
         </tr>        
         <tr>
           <td></td>
           <td>
-            どちらでもない派：
+            どちらでもない派：<%= @count_c %>
           </td>
           <td></td>
         </tr>        
@@ -43,7 +43,7 @@
   
     <div class="card">
       <div class="card-header">
-        <strong>みなさんのご意見</strong>
+        <strong>みなさんのご意見</strong><%= @alart %>
       </div>
       <table class="table">
         <thead>
@@ -55,12 +55,20 @@
           </tr>
         </thead>
         <tbody>
+          <% @answers.each do |answer| %>
           <tr>
-            <td>画像(仮）</td>
-            <td><%= @answer.answer_content %></td>
-            <td><%#= @answer.user.name %></td>
+            <% if answer.option == "1" %>
+              <td><%= @topic.option1 %>派</td>
+            <% elsif answer.option == "2" %>
+              <td><%= @topic.option2 %>派</td>
+            <% else %>
+              <td>どちらでもない派</td>
+            <% end %>
+            <td><%= answer.answer_content %></td>
+            <td><%= answer.user.name %></td>
             <td>削除ボタン(仮）</td>
           </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
@@ -74,19 +82,19 @@
             <li>
               <ul><%= @alart %></ul>
               <ul>
-              <%= f.radio_button :select_option, 1 %>
+              <%= f.radio_button :option, 1 %>
               <%= @topic.option1 %>派
               </ul>
             </li>
             <li>          
               <ul>
-              <%= f.radio_button :select_option, 2 %>
+              <%= f.radio_button :option, 2 %>
               <%= @topic.option2 %>派
               </ul>          
             </li>
             <li>          
               <ul>
-              <%= f.radio_button :select_option, 0 %>
+              <%= f.radio_button :option, 0 %>
               どちらでもない派
               </ul>          
             </li><br>

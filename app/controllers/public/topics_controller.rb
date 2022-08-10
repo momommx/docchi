@@ -23,21 +23,13 @@ class Public::TopicsController < ApplicationController
     @topic = Topic.find(params[:id])
     @user = @topic.user
     @answer = Answer.new
+    @answers = Answer.where(topic_id: @topic.id)
     
-    # 回答欄のラジオボタンの分岐
-    if params[:answer][:select_option] == "0"  #どちらでもない派
-      @answer.option = current_user.option3  
-      @answer.save
-    elsif params[:answer][:select_option] == "1" #A派
-      @answer.option = current_user.option1
-      @answer.save
-    elsif params[:answer][:select_option] == "2" #B派
-      @answer.option = current_user.option2
-      @answer.save
-    else
-      @alart = "票が選択されていません。"
-    end
-      
+    # A,B,C票ごとのカウント数
+    @count_a = Topic.joins(:answers).where(answers: {option: "1"}, id: @topic.id).count
+    @count_b = Topic.joins(:answers).where(answers: {option: "2"}, id: @topic.id).count
+    @count_c = Topic.joins(:answers).where(answers: {option: "0"}, id: @topic.id).count
+               
     # @answers = @answer.answer_content.page(params[:page]).per(7).reverse_order
   end
   
