@@ -1,0 +1,10 @@
+<%# 非同期化のために更新したい箇所を部分テンプレート化する%>
+<% if topic.favorited_by?(current_user) %>
+  <%= link_to public_topic_favorites_path(topic), method: :delete, remote: true do %>
+    <i class="fa-solid fa-thumbs-up"></i><%= topic.favorites.count %>
+  <% end %>
+<% else %>
+  <%= link_to public_topic_favorites_path(topic), method: :post, remote: true do %>
+    <i class="fa-light fa-thumbs-up"></i><%= topic.favorites.count %>
+  <% end %>
+<% end %>

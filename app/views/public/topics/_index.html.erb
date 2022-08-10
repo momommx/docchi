@@ -25,7 +25,7 @@
         <td><%= topic.genre.name %></td>
         
         <td id="favorite-btn<%= topic.id %>">
-          <%#= render 'favorites/favorite-btn', topic: topic %>
+          <%= render 'public/favorites/favorite-btn', topic: topic %>
         </td>
         
         <td id="answer_count">
