@@ -9,15 +9,13 @@ class Public::AnswersController < ApplicationController
     @answer.user_id = @user.id
     @answer.topic_id = @topic.id
     
-    # binding.pry
-    
-    # @alart = "票が選択されていません。"
     if @answer.save
       redirect_to public_topic_path(@topic)
     else
       render "public/topics/show"
     end
   end
+  
   
   def destroy
     @topic = Topic.find(params[:topic_id])

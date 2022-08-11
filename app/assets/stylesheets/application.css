@@ -20,6 +20,11 @@
     font-weight: 100;
 }
 
+.marker-green {
+    background: linear-gradient(transparent 60%, #d3e173 60%);
+    font-weight: 100;
+}
+
 
 .balloon2-left {
   position: relative;

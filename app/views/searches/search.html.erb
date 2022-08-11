@@ -14,14 +14,13 @@
         </thead>
         <% @topics.each do |topic| %>
           <tr>
-            <td><%= link_to topic.topic_title, public_topics_path(topic.id) %></td>
+            <td><%= link_to topic.topic_title, public_topic_path(topic.id) %></td>
             <td><%= topic.genre.name %></td>
-            <td><%= link_to topic.user.name %>さん</td>
+            <td><%= link_to topic.user.name, public_user_path(topic.user.id) %>さん</td>
             <td><%= topic.answers.count %>人</td>
           </tr>
         <% end %>
       </tbody>
    </table>
-   <%= paginate @topics %>
   </div>   
 </div>
