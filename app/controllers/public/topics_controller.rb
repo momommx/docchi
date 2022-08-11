@@ -8,7 +8,8 @@ class Public::TopicsController < ApplicationController
   def index
     @user = current_user
     @topic = Topic.new
-    @topics = Topic.all
+    @topics = Topic.page(params[:page])
+    
     #if params[:latest]
       #@topics = Topic.latest
     #elsif params[:old]
@@ -24,12 +25,11 @@ class Public::TopicsController < ApplicationController
     @answer = Answer.new
     @answers = Answer.where(topic_id: @topic.id)
     
-    # A,B,C票ごとのカウント数
+    # A,B,C票ごとの合計票数
     @count_a = Topic.joins(:answers).where(answers: {option: "1"}, id: @topic.id).count
     @count_b = Topic.joins(:answers).where(answers: {option: "2"}, id: @topic.id).count
     @count_c = Topic.joins(:answers).where(answers: {option: "0"}, id: @topic.id).count
                
-    # @answers = @answer.answer_content.page(params[:page]).per(7).reverse_order
   end
   
   def new

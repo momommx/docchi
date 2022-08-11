@@ -31,6 +31,8 @@ Rails.application.routes.draw do
     resources :users, only: [:show]
   end
   
+
+  
   # ゲストユーザ用
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
@@ -39,5 +41,6 @@ Rails.application.routes.draw do
   # 検索機能
   get "search" => "searches#search"
   
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
