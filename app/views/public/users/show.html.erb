@@ -2,10 +2,11 @@
 <div class="container">
     <div class="mt-4">
         <h4><span class ="marker-green"><%= @user.name %>さんのページ</span></h4>
+        <div class="mb-2 d-md-flex justify-content-md-end">
+            <% if @user.id == current_user.id %>    
+                <%= link_to "いいねしたお題", favorites_public_user_path(@user), class:"btn btn-success rounded-pill" %>
+            <% end %>
+        </div>
         <%= render partial: 'topics', locals: { topics: @topics, user: @user } %>
-
-        <% if @user.id == current_user.id %>    
-            <%= link_to "いいねした投稿", favorites_public_user_path(@user), class:"btn btn-success rounded-pill" %>
-        <% end %>
     </div>   
 </div>

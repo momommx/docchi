@@ -6,8 +6,6 @@ class Public::UsersController < ApplicationController
     @users = User.all
     @user = User.find(params[:id])
     @topics = @user.topics
-    
-    
   end 
  
   def favorites

@@ -44,54 +44,58 @@
     <!--投票結果のプログレスバー-->
     <% unless (@count_a + @count_b + @count_c) == 0 %>
       <% sum = @count_a.to_f + @count_b.to_f + @count_c %>
-      <div class="progress" style="max-width: 100%; height: 40px;">
-        <div class="progress-bar" style="width: <%= @count_a / sum * 100 %>%; background-color: #F6CA5B">
-          <%= @topic.option1 %> <%= (@count_a / sum * 100).round %>%
+      <div  class=”row” >
+        <div class="ml-auto">
+          <div class="progress" style="max-width: 100%; height: 40px ">  
+            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: <%= @count_a / sum * 100 %>%; background-color: #F6CA5B">
+              <%= @topic.option1 %> <%= (@count_a / sum * 100).round %>%
+            </div>
+            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: <%= @count_b / sum * 100 %>%; background-color: #D4A04E">
+              <%= @topic.option2 %> <%= (@count_b / sum * 100).round %>%
+            </div>
+            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: <%= @count_c / sum * 100 %>%; background-color: #F6795B">
+              どちらでもない <%= (@count_c / sum * 100).round %>%
+            </div>
+          </div>
         </div>
-        <div class="progress-bar progress-bar-stripped" style="width: <%= @count_b / sum * 100 %>%; background-color: #D4A04E">
-          <%= @topic.option2 %> <%= (@count_b / sum * 100).round %>%
+      </div><br>
+  
+      <div>
+        <div>
+          <strong>みなさんのご意見</strong><%= @alart %>
         </div>
-        <div class="progress-bar progress-bar-stripped" style="width: <%= @count_c / sum * 100 %>%; background-color: #F6795B">
-          どちらでもない <%= (@count_c / sum * 100).round %>%
-        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>投票された票</th>
+              <th>回答内容</th>
+              <th>回答者の名前</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @answers.each do |answer| %>
+            <tr>
+              <% if answer.option == "1" %>
+                <td><%= @topic.option1 %>派</td>
+              <% elsif answer.option == "2" %>
+                <td><%= @topic.option2 %>派</td>
+              <% else %>
+                <td>どちらでもない派</td>
+              <% end %>
+              <td><%= answer.answer_content %></td>
+              <td><%= answer.user.name %>さん</td>
+              <td id="answer-delete">
+                <% if answer.user == current_user %>
+                  <%= link_to '削除', public_topic_answer_path(@topic, answer), class:"btn btn-outline-danger rounded-pill", method: :delete, "data-confirm" => "削除しますか？" %>
+                <% end %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
     <% end %>
-  
-    <div class="card">
-      <div class="card-header">
-        <strong>みなさんのご意見</strong><%= @alart %>
-      </div>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>投票された票</th>
-            <th>回答内容</th>
-            <th>回答者の名前</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @answers.each do |answer| %>
-          <tr>
-            <% if answer.option == "1" %>
-              <td><%= @topic.option1 %>派</td>
-            <% elsif answer.option == "2" %>
-              <td><%= @topic.option2 %>派</td>
-            <% else %>
-              <td>どちらでもない派</td>
-            <% end %>
-            <td><%= answer.answer_content %></td>
-            <td><%= answer.user.name %>さん</td>
-            <td id="answer-delete">
-              <% if answer.user == current_user %>
-                <%= link_to '削除', public_topic_answer_path(@topic, answer), class:"btn btn-outline-danger rounded-pill", method: :delete, "data-confirm" => "削除しますか？" %>
-              <% end %>
-            </td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
     
     <h4 style="margin-top:20px"><span class="marker-red">回答してみる！</span></h4>
     <%= form_with(model: [@topic, @answer], url: public_topic_answers_path(@topic.id), method: :post, local: true) do |f| %>
