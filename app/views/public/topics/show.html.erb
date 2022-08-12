@@ -39,7 +39,23 @@
           <td></td>
         </tr>        
       </tbody>
-    </table><br>
+    </table>
+    
+    <!--投票結果のプログレスバー-->
+    <% unless (@count_a + @count_b + @count_c) == 0 %>
+      <% sum = @count_a.to_f + @count_b.to_f + @count_c %>
+      <div class="progress" style="max-width: 100%; height: 40px;">
+        <div class="progress-bar" style="width: <%= @count_a / sum * 100 %>%; background-color: #F6CA5B">
+          <%= @topic.option1 %> <%= (@count_a / sum * 100).round %>%
+        </div>
+        <div class="progress-bar progress-bar-stripped" style="width: <%= @count_b / sum * 100 %>%; background-color: #D4A04E">
+          <%= @topic.option2 %> <%= (@count_b / sum * 100).round %>%
+        </div>
+        <div class="progress-bar progress-bar-stripped" style="width: <%= @count_c / sum * 100 %>%; background-color: #F6795B">
+          どちらでもない <%= (@count_c / sum * 100).round %>%
+        </div>
+      </div>
+    <% end %>
   
     <div class="card">
       <div class="card-header">
