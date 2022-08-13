@@ -7,7 +7,8 @@ class Admin::AnswersController < ApplicationController
   
   def destroy
      @answer = Answer.find(params[:id])
-     Answer.find(params[:id]).destroy
+     # Answerテーブルから受け取ったAnswerのidに該当する回答内容を削除する
+     Answer.find(params[:id]).destroy 
      redirect_to request.referer
   end
     

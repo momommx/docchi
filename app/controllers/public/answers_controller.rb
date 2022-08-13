@@ -11,8 +11,9 @@ class Public::AnswersController < ApplicationController
     
     if @answer.save
       redirect_to public_topic_path(@topic)
+      flash[:notice] = "１票入りました！"
     else
-      render "public/topics/show"
+      render :public/topics/show
     end
   end
   
