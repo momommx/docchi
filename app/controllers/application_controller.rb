@@ -13,6 +13,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # Bootstrap対応のフラッシュメッセージ表示
+  add_flash_types :success, :info, :warning, :danger
 
   protected
 
@@ -21,7 +23,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
   
-    
+  
   #非ログイン時でも全ページ閲覧可能にする
   #before_action :login_required
  

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :answers, only: [:index, :destroy]
     resources :genres,  only: [:index, :create, :destroy]
-    resources :users,   only: [:index, :update]
+    resources :users,   only: [:index, :update, :edit]
   end
   
 

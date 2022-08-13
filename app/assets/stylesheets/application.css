@@ -25,6 +25,12 @@
     font-weight: 100;
 }
 
+.marker-blue {
+    background: linear-gradient(transparent 60%, #ABC4FF 60%);
+    font-weight: 100;
+}
+
+
 .balloon2-left {
   position: relative;
   display: inline-block;

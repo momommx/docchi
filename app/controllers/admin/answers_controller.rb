@@ -2,7 +2,7 @@ class Admin::AnswersController < ApplicationController
   before_action :authenticate_admin!
   
   def index
-    @answers = Answer.all
+    @answers = Answer.page(params[:page])
   end
   
   def destroy

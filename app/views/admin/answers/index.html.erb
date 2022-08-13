@@ -1,7 +1,6 @@
-admin/answers/index.html.erb
 <div class="container">
   <div class="row my-3">
-    <h4>回答一覧</h4><br>
+    <h4><span class="marker-green">回答一覧</span></h4>
     
     <table class="table table-hover table-inverse">
       <tbody>
@@ -24,6 +23,12 @@ admin/answers/index.html.erb
           </tr>
         <% end %>
       </tbody>
-   </table>
-  </div>   
+    </table>
+  </div>  
 </div>
+
+<!-- ページネーション -->
+<div class="pagination pagination-sm justify-content-center">
+  <%= paginate @answers, theme: 'twitter-bootstrap-4' %>
+</div>
+
