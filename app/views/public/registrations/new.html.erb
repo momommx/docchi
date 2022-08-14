@@ -4,9 +4,9 @@
   <h5 class="bg-light text-dark text-center" style="width:30%">
     初めて利用する方
   </h5>
-  <h9>
+  <p>
     ※ユーザ登録なしでも閲覧可能です。<%= link_to "ゲストログイン", root_path %>からお入りください。
-  </h9>
+  </p>
  
   <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
     <%= render "public/shared/error_messages", resource: resource %>

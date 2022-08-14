@@ -22,19 +22,16 @@
             <!-- 検索バー -->
             <div class="form-inline">
               <%= form_with url: search_path, local: true, method: :get do |f| %>
-                <%= f.text_field :word, placeholder: "お題の検索", class: "form-control mr-sm-2 rounded-pill" %>
+                <%= f.text_field :word, placeholder: "お題の検索", class: "rounded-pill" %>
                 
-                <%#= f.collection_select :genre_name, Genre.all, :id, :name, prompt: "ジャンルの検索", options = { include_blank: true } %>
+                <%= f.collection_select :genre_id, Genre.all, :id, :name, prompt: "ジャンル" %>
                 
                 <%= f.submit "検索", class: "btn btn-outline-success rounded-pill my-2 my-sm-0" %>
               <% end %>
             </div>
             
         <% else %>
-            <li class="nav-item" style="list-style: none">
-              <%= link_to "お題一覧", public_topics_path, class: "nav-link text-light" %>
-            </li>
-            <li class="nav-item" style="list-style: none">
+            <li class="nav-item ml-auto" style="list-style: none">
               <%= link_to "ユーザー登録", new_user_registration_path, class: 'nav-link text-light' %>
             </li>
             <li class="nav-item" style="list-style: none">
