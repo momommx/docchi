@@ -1,6 +1,7 @@
 <p>public/topics/show.html.erb</p>
 <div class="container">
   <div style="d-flex flex-column justify-content-start">
+    
     <table width="100%">
       <thead>
         <tr>
@@ -45,8 +46,8 @@
     <% unless (@count_a + @count_b + @count_c) == 0 %>
       <% sum = @count_a.to_f + @count_b.to_f + @count_c %>
       <div class="row">
-        <div class="col-md-9 offset-md-3">
-          <div class="progress" style="max-width: 50%; height: 40px;">
+        <div class="col-md-6 offset-md-3">
+          <div class="progress" style="height: 40px;">
             <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: <%= @count_a / sum * 100 %>%; background-color: #F6CA5B">
               <%= @topic.option1 %> <%= (@count_a / sum * 100).round %>%
             </div>

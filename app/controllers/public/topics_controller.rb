@@ -8,15 +8,12 @@ class Public::TopicsController < ApplicationController
   def index
     @user = current_user
     @topic = Topic.new
-    @topics = Topic.page(params[:page])
+    @topics = Topic.includes(:answers).order(created_at: :desc)
     
-    #if params[:latest]
-      #@topics = Topic.latest
-    #elsif params[:old]
-     # @topics = Topic.old
-    #else
-     # @topics = Topic.all
-    #end
+    if params[:sort] == "answer_count"
+      @topics = @topics.sort{|a, b| b.answers.count <=> a.answers.count }
+    end
+    @topics = Kaminari.paginate_array(@topics).page(params[:page])
   end
   
   def show
