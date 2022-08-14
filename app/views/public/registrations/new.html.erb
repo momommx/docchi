@@ -1,13 +1,10 @@
 <div class="container">
-  <p>public/registrations/new.html</p>
-
-  <h5 class="bg-light text-dark text-center" style="width:30%">
-    初めて利用する方
-  </h5>
-  <p>
-    ※ユーザ登録なしでも閲覧可能です。<%= link_to "ゲストログイン", root_path %>からお入りください。
-  </p>
- 
+  <div class="mr-auto py-2 mb-4 header-bubble" style="width:50%">
+   <b>初めて利用する方</b>
+  </div>
+  
+  <font size="2"><p>※ユーザ登録なしでも閲覧可能です。<%= link_to "ゲストログイン", root_path %>からお入りください。</p> </font>
+  
   <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
     <%= render "public/shared/error_messages", resource: resource %>
 
@@ -41,15 +38,15 @@
     </table>
   
     <div class="row">
-      <div class="col-lg-3"></div>
-      <div class="col-lg-2"><%= f.submit "ユーザー登録", class:'btn btn-sm btn-success' %></div>
+      <div class="col-md-3"></div>
+      <div class="col-md-4"><%= f.submit "ユーザー登録", class:'btn btn-info rounded-pill' %></div>
     </div><br>
 
   <% end %>
 
-  <h5 class="bg-light text-dark text-center" style="width:30%">
-    すでに登録済みの方
-  </h5>
+  <div class="mr-auto py-1 mb-4 header-bubble" style="width:50%">
+    <h6><b>すでに登録済みの方</b></h6>
+  </div>
   
   <h6>
     <%= link_to "こちら", new_user_session_path %>からログインしてください。
