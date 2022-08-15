@@ -2,20 +2,27 @@ public/topics/index.html.erb
 
 <div class="container">
   <div style="d-flex flex-column justify-content-start">
-    <div class="row">
-      <%= link_to 'お題を作る', new_public_topic_path, class: "btn btn-success" %>
-    </div>
+
     
-    <div class='container px-5 px-sm-0'>
-      <div class='row'>
-        <div class='col-md-10 mx-auto'>
+    <div class='row'>
+      <div class='col-12 clearfix mx-auto'>
+        <div class="float-left">
           <h2>お題一覧</h2>
-          <%= link_to '新着順', public_topics_path %>
-          |<%= link_to '発言数順', public_topics_path(sort: "answer_count") %>
-          
-          <%= render 'index', topics: @topics, user: @user %>
         </div>
-      </div>　
-    </div>
+        <div class="float-right">     
+          <%= link_to new_public_topic_path, class: 'btn btn-success btn-lg rounded-pill' do %>
+            <i class="fa-regular fa-pen-to-square"></i>
+            お題を作る
+          <% end %>
+        </div><br><br>
+        <div class="text-left">
+          <%= link_to '新着順', public_topics_path %>
+          | <%= link_to 'いいねの多い順', public_topics_path(sort: "favorite_count") %>
+          | <%= link_to '発言の多い順', public_topics_path(sort: "answer_count") %>
+        </div>
+        
+        <%= render 'index', topics: @topics, user: @user %>
+      </div>
+    </div>　
   </div>
 </div>

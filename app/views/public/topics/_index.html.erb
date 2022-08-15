@@ -28,13 +28,15 @@
           <%= render 'public/favorites/favorite-btn', topic: topic %>
         </td>
         
-        <td id="answer_count">
+        <td>
           <%= topic.answers.count %>人
         </td>
         
         <td>          
           <% if topic.user == current_user %>
-            <%= link_to '削除', public_topic_path(topic.id), method: :delete, class:"btn btn-outline-danger rounded-pill", data: {confirm: "ご意見も一緒に削除されますがよろしいですか？"} %>
+            <%= link_to public_topic_path(topic.id), method: :delete, class:"btn btn-outline-danger rounded-pill", data: {confirm: "ご意見も一緒に削除されますがよろしいですか？"} do %>
+              <i class="fa-regular fa-trash-can"></i>
+            <% end %>
           <% end %>
         </td>
       </tr>

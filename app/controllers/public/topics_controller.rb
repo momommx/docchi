@@ -10,9 +10,15 @@ class Public::TopicsController < ApplicationController
     @topic = Topic.new
     @topics = Topic.includes(:answers).order(created_at: :desc)
     
-    if params[:sort] == "answer_count"
+    # いいねの多い順
+    if params[:sort] == "favorite_count"   
+      @topics = @topics.sort{|a, b| b.favorites.count <=> a.favorites.count }
+    
+    # 発言数の多い順
+    elsif params[:sort] == "answer_count"
       @topics = @topics.sort{|a, b| b.answers.count <=> a.answers.count }
     end
+    
     @topics = Kaminari.paginate_array(@topics).page(params[:page])
   end
   

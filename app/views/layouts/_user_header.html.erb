@@ -26,7 +26,10 @@
                 
                 <%= f.collection_select :genre_id, Genre.all, :id, :name, prompt: "ジャンル" %>
                 
-                <%= f.submit "検索", class: "btn btn-outline-success rounded-pill my-2 my-sm-0" %>
+                <%= f.button :type => "submit", class: "btn btn-success rounded-pill my-2 my-sm-0" do %>
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  検索
+                <% end %>
               <% end %>
             </div>
             
