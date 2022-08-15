@@ -32,7 +32,11 @@ class Public::TopicsController < ApplicationController
     @count_a = Topic.joins(:answers).where(answers: {option: "1"}, id: @topic.id).count
     @count_b = Topic.joins(:answers).where(answers: {option: "2"}, id: @topic.id).count
     @count_c = Topic.joins(:answers).where(answers: {option: "0"}, id: @topic.id).count
-               
+    
+    @answer_latest = @answers.order('created_at DESC').limit(5)
+    @answer_a = @answers.where(option: "1")
+    @answer_b = @answers.where(option: "2")
+    @answer_c = @answers.where(option: "0")
   end
   
   def new

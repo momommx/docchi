@@ -1,4 +1,4 @@
-<p>public/topics/show.html.erb</p>
+<p>public/topics/show.html.erb
 <div class="container">
   <div style="d-flex flex-column justify-content-start">
     
@@ -62,11 +62,25 @@
           </div>
         </div>
       </div><br>
-    
-      <div>
-        <strong>投票者のご意見</strong><%= @alart %>
+    　<!--票のタイプごとに表示させるアイコン-->
+      <div class="answer-head">
+        投票者のご意見
+        <ul class="answer-nav">
+          <li onclick="showOption0()">
+            <i class="fa-solid fa-circle-left fa-2x" style="color:tan;"></i>
+          </li>          
+          <li onclick="showOption1()">
+            <i class="fa-solid fa-user-large fa-2x" style="color:tomato;"></i> 
+          </li>
+          <li onclick="showOption2()">
+            <i class="fa-solid fa-user-large fa-2x" style="color:cornflowerblue;"></i>
+          </li>
+          <li onclick="showOption3()">
+            <i class="fa-solid fa-user-large fa-2x" style="color:yellowgreen;"></i>
+          </li>
+        </ul>
       </div>
-      <table class="table">
+      <table id="answer-table" class="table">
         <thead>
           <tr>
             <th>票のタイプ</th>
@@ -75,37 +89,39 @@
             <th></th>
           </tr>
         </thead>
-        <tbody>
-          <% @answers.each do |answer| %>
-          <tr>
-            <% if answer.option == "1" %>
-              <td>
-                <i class="fa-solid fa-user-large fa-2x" style="color:tomato;"></i> 
-                <%= @topic.option1 %>派
-              </td>
-            <% elsif answer.option == "2" %>
-              <td>
-                <i class="fa-solid fa-user-large fa-2x" style="color:cornflowerblue;"></i>
-                <%= @topic.option2 %>派
-              </td>
-            <% else %>
-              <td>
-                <i class="fa-solid fa-user-large fa-2x" style="color:yellowgreen;"></i>
-                どちらでもない派
-              </td>
-            <% end %>
-            <td><%= answer.answer_content %></td>
-            <td><%= answer.user.name %>さん</td>
-            <td id="answer-delete">
-              <% if answer.user == current_user %>
-                <%= link_to public_topic_answer_path(@topic, answer), class:"btn btn-outline-danger rounded-pill", method: :delete, "data-confirm" => "削除しますか？" do %>
-                  <i class="fa-regular fa-trash-can"></i>
-                <% end %>        
+          <% [@answer_latest, @answer_a, @answer_b, @answer_c].each do |answers| %>
+          <tbody class="invisible">
+            <% answers.each do |answer| %>
+            <tr>
+              <% if answer.option == "1" %>
+                <td>
+                  <i class="fa-solid fa-user-large fa-2x" style="color:tomato;"></i> 
+                  <%= @topic.option1 %>派
+                </td>
+              <% elsif answer.option == "2" %>
+                <td>
+                  <i class="fa-solid fa-user-large fa-2x" style="color:cornflowerblue;"></i>
+                  <%= @topic.option2 %>派
+                </td>
+              <% else %>
+                <td>
+                  <i class="fa-solid fa-user-large fa-2x" style="color:yellowgreen;"></i>
+                  どちらでもない派
+                </td>
               <% end %>
-            </td>
-          </tr>
+              <td><%= answer.answer_content %></td>
+              <td><%= answer.user.name %>さん</td>
+              <td>
+                <% if answer.user == current_user %>
+                  <%= link_to public_topic_answer_path(@topic, answer), class:"btn btn-outline-danger rounded-pill", method: :delete, "data-confirm" => "削除しますか？" do %>
+                    <i class="fa-regular fa-trash-can"></i>
+                  <% end %>        
+                <% end %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
           <% end %>
-        </tbody>
       </table>
     <% end %>
     
@@ -147,3 +163,27 @@
   </div>
 </div>
 
+<script>
+document.querySelector('#answer-table > tbody:nth-child(2)').classList.remove('invisible');
+  function showOption1() {
+    document.querySelector('#answer-table > tbody:nth-child(2)').classList.add('invisible');
+    document.querySelector('#answer-table > tbody:nth-child(4)').classList.add('invisible');
+    document.querySelector('#answer-table > tbody:nth-child(5)').classList.add('invisible');
+    document.querySelector('#answer-table > tbody:nth-child(3)').classList.remove('invisible');
+  }
+  function showOption2() {
+    document.querySelector('#answer-table > tbody:nth-child(2)').classList.add('invisible');
+    document.querySelector('#answer-table > tbody:nth-child(3)').classList.add('invisible');
+    document.querySelector('#answer-table > tbody:nth-child(5)').classList.add('invisible');
+    document.querySelector('#answer-table > tbody:nth-child(4)').classList.remove('invisible');
+  }
+  function showOption3() {
+    document.querySelector('#answer-table > tbody:nth-child(2)').classList.add('invisible');
+    document.querySelector('#answer-table > tbody:nth-child(3)').classList.add('invisible');
+    document.querySelector('#answer-table > tbody:nth-child(4)').classList.add('invisible');
+    document.querySelector('#answer-table > tbody:nth-child(5)').classList.remove('invisible');
+  }
+  function showOption0() {
+    document.querySelector('#answer-table > tbody:nth-child(2)').classList.remove('invisible');
+  } 
+</script>
