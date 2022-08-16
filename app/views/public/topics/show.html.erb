@@ -20,29 +20,8 @@
           </td>
           <td><%= @topic.genre.name %></td>
         </tr>
-        <tr>
-          <td></td>
-          <td>
-            <%= @topic.option1 %>派：<%= @count_a %>
-          </td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>
-            <%= @topic.option2 %>派：<%= @count_b %>
-           </td>
-          <td></td>
-        </tr>        
-        <tr>
-          <td></td>
-          <td>
-            どちらでもない派：<%= @count_c %>
-          </td>
-          <td></td>
-        </tr>        
       </tbody>
-    </table><br>
+    </table><br> 
     
     <!--投票結果のプログレスバー-->
     <% unless (@count_a + @count_b + @count_c) == 0 %>
@@ -62,9 +41,19 @@
           </div>
         </div>
       </div><br>
+    
+      <div class="vote-list">
+       <p>
+         <span class="col"><%= @topic.option1 %>派</span>：<%= @count_a %>票<br>
+         <span class="col"><%= @topic.option2 %>派</span>：<%= @count_b %>票<br>
+         <span class="col">どちらでもない派</span>：<%= @count_c %>票<br>
+       </p>
+     </div>
+
+
     　<!--票のタイプごとに表示させるアイコン-->
       <div class="answer-head">
-        <h4 style="margin-top:20px">投票者のご意見</h4>
+        <h4 style="margin-top:20px"><span class="marker-green">投票者のご意見</span></h4>
         <ul class="answer-nav">
           <li onclick="showOption0()">
             <i class="fa-solid fa-circle-left fa-2x" style="color:tan;"></i>
@@ -83,6 +72,7 @@
           </li>
         </ul>
       </div>
+      
       <table id="answer-table" class="table">
         <thead>
           <tr>
@@ -112,7 +102,11 @@
                   どちらでもない派
                 </td>
               <% end %>
-              <td><%= answer.answer_content %></td>
+              <td>
+                <div class='arrow_box'>
+                  <%= answer.answer_content %>
+                </div>
+              </td>
               <td><%= answer.user.name %>さん</td>
               <td>
                 <% if answer.user == current_user %>
