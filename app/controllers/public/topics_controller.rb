@@ -34,7 +34,7 @@ class Public::TopicsController < ApplicationController
     @count_c = Topic.joins(:answers).where(answers: {option: "0"}, id: @topic.id).count
   
     # A,B,C票ごとのテーブル表示アイコン
-    @answer_latest = @answers.order('created_at DESC').limit(4)      # 矢印アイコン: 最新の投票内容を５つ表示
+    @answer_latest = @answers.order('created_at DESC').limit(4)      # 矢印アイコン: 最新の投票内容を4つ表示
     @answer_a = @answers.where(option: "1")
     @answer_b = @answers.where(option: "2")
     @answer_c = @answers.where(option: "0")
