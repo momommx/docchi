@@ -32,8 +32,9 @@ class Public::TopicsController < ApplicationController
     @count_a = Topic.joins(:answers).where(answers: {option: "1"}, id: @topic.id).count
     @count_b = Topic.joins(:answers).where(answers: {option: "2"}, id: @topic.id).count
     @count_c = Topic.joins(:answers).where(answers: {option: "0"}, id: @topic.id).count
-    
-    @answer_latest = @answers.order('created_at DESC').limit(5)
+  
+    # A,B,C票ごとのテーブル表示アイコン
+    @answer_latest = @answers.order('created_at DESC').limit(4)      # 矢印アイコン: 最新の投票内容を５つ表示
     @answer_a = @answers.where(option: "1")
     @answer_b = @answers.where(option: "2")
     @answer_c = @answers.where(option: "0")
@@ -70,9 +71,5 @@ class Public::TopicsController < ApplicationController
   def topic_params
     params.require(:topic).permit(:topic_title, :option1, :option2, :genre_id, :user_id)
   end
-  
-  # def answer_params
-    # params.require(:answer).permit(:option, :answer_content)
-  # end
   
 end

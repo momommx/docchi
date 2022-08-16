@@ -5,8 +5,10 @@
         「<%= params[:word] %>」
       <% elsif params[:genre_id].present? && params[:word].blank?%>
         「<%= @genre.name %>」
-      <% else %>
+      <% elsif params[:genre_id].present? && params[:word].present?%>
         「<%= params[:word] %>」 と 「<%= @genre.name %>」
+      <% else %>
+        「　」
       <% end %>      
         の検索結果： <%= @count %>件
     </h5>
