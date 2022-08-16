@@ -27,6 +27,8 @@ class Public::TopicsController < ApplicationController
     @user = @topic.user
     @answer = Answer.new
     @answers = Answer.where(topic_id: @topic.id)
+    # @answersの中のcurrent_user.idを含むデータを@user_answerに代入する。
+    @user_answer = @answers.where(user_id: current_user.id)
     
     # A,B,C票ごとの合計票数
     @count_a = Topic.joins(:answers).where(answers: {option: "1"}, id: @topic.id).count

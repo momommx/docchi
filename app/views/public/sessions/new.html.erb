@@ -6,7 +6,7 @@
   </svg>
   <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
     <svg class="bi flex-shrink-0 me-2" width="24" height="24"><use xlink:href="#exclamation-triangle-fill"/></svg>
-    <div>&nbsp;管理者によってアカウントを停止されています。</div>
+    <div>&nbsp;<%= flash[:danger] %><</div>
   </div>
 <% end %>
 

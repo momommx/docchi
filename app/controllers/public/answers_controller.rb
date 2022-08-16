@@ -10,10 +10,11 @@ class Public::AnswersController < ApplicationController
     @answer.topic_id = @topic.id
     
     if @answer.save
+      flash[:notice] = '清き１票入りました！'
       redirect_to public_topic_path(@topic)
-      flash[:notice] = "１票入りました！"
     else
-      render :public/topics/show
+      flash[:danger] = ' 投票できませんでした。票とコメントの両方を入力してください。'
+      redirect_back(fallback_location: root_path)
     end
   end
   
