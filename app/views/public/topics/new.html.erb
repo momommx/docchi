@@ -5,7 +5,7 @@
         <%= @topic.errors.count %>件のエラーが起きています。
         <ul>
           <% @topic.errors.full_messages.each do |message| %>
-           <li><%= message %></li>
+            <li><%= message %></li>
           <% end %>
         </ul>
       </div>
@@ -32,7 +32,7 @@
         
         <div class="form-group row">
           <%= f.label :genre, "お題のジャンル", {class: 'col-sm-2 col-form-label'} %>
-          <%= f.collection_select :genre_id, Genre.all, :id, :name %>
+          <%= f.collection_select :genre_id, Genre.all, :id, :name, options = {prompt: '選択してください'} %>
         </div>  
   
         <div class="text-center">

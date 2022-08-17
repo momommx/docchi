@@ -64,6 +64,8 @@ ja:
       models:
         topic:
           attributes:
+            genre:
+              required: "　ジャンルが未記入です。"
             topic_title: 
               blank: "　　　お題が未記入です。" 
             option1:
@@ -71,6 +73,7 @@ ja:
             option2:
               blank: "　選択肢２が未記入です。"
               
+        
     models:
       user: ユーザー
       topic:
@@ -84,6 +87,4 @@ ja:
         topic_title: お題
         option1: 選択肢１
         option2: 選択肢２
-      genre:
-        name: ジャンル名
-      answer_content: 回答内容
+        genre: ジャンル

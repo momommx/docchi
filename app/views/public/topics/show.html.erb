@@ -1,167 +1,192 @@
-<p>public/topics/show.html.erb
+<!--フラッシュメッセージのアイコン-->
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+  </symbol>
+</svg>
+
+<!--フラッシュメッセージ-->
+<div style="width:50%; margin:15px auto;">
+  <% if flash[:danger] %>
+    <div class="alert alert-danger" style="text-align: center;" role="alert">
+      <svg class="bi flex-shrink-0 me-2" width="24" height="24"><use xlink:href="#exclamation-triangle-fill"/></svg>
+      <%= flash[:danger] %>
+    </div>
+  <% end %>
+</div>
+
+<div style="width:30%; margin:15px auto;">
+  <% if flash[:success] %>
+    <div class="alert alert-success" style="text-align: center; font-weight: bold;" role="alert">
+      <%= flash[:success] %>
+    </div>  
+  <% end %>
+</div>
+
 
 <div class="container">
-  <div style="d-flex flex-column justify-content-start">
-    
-    <table width="100%">
-      <thead>
-        <tr>
-          <th width="10%"></th>
-          <th>お題</th>
-          <th>お題のジャンル</th>
-        </tr>          
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <i class="fa-solid fa-face-grin fa-5x" style="color:peachpuff;"></i><br>
-            <%= link_to @user.name, public_user_path(@user.id) %>さん</td>
-          <td>
-            <span class="balloon2-left"><%= @topic.topic_title %></span>
-          </td>
-          <td><%= @topic.genre.name %></td>
-        </tr>
-      </tbody>
-    </table><br> 
-    
-    <!--投票結果のプログレスバー-->
-    <% unless (@count_a + @count_b + @count_c) == 0 %>
-      <% sum = @count_a.to_f + @count_b.to_f + @count_c %>
-      <div class="row">
-        <div class="col-md-6 offset-md-3">
-          <div class="progress" style="height: 40px;">
-            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: <%= @count_a / sum * 100 %>%; background-color: tomato">
-              <%= @topic.option1 %> <%= (@count_a / sum * 100).round %>%
-            </div>
-            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: <%= @count_b / sum * 100 %>%; background-color: cornflowerblue">
-              <%= @topic.option2 %> <%= (@count_b / sum * 100).round %>%
-            </div>
-            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: <%= @count_c / sum * 100 %>%; background-color: yellowgreen">
-              どちらでもない <%= (@count_c / sum * 100).round %>%
-            </div>
-          </div>
-        </div>
-      </div><br>
-    
-      <div class="vote-list">
-       <p>
-         <span class="col"><%= @topic.option1 %>派</span>：<%= @count_a %>票<br>
-         <span class="col"><%= @topic.option2 %>派</span>：<%= @count_b %>票<br>
-         <span class="col">どちらでもない派</span>：<%= @count_c %>票<br>
-       </p>
-     </div>
-
-
-      <!--票のタイプごとに表示させるアイコン-->
-      <div class="answer-head">
-        <h4 style="margin-top:20px"><span class="marker-green">投票者のご意見</span></h4>
-        <ul class="answer-nav">
-          <li onclick="showOption0()">
-            <i class="fa-solid fa-circle-left fa-2x" style="color:tan;"></i>
-          </li>          
-          <li onclick="showOption1()">
-            <i class="fa-solid fa-user-large fa-2x" style="color:tomato;"></i> 
-            <%= @topic.option1 %>派
-          </li>
-          <li onclick="showOption2()">
-            <i class="fa-solid fa-user-large fa-2x" style="color:cornflowerblue;"></i>
-            <%= @topic.option2 %>派            
-          </li>
-          <li onclick="showOption3()">
-            <i class="fa-solid fa-user-large fa-2x" style="color:yellowgreen;"></i>
-            どちらでもない派            
-          </li>
-        </ul>
-      </div>
-      
-      <table id="answer-table" class="table">
+  <div class="mt-4">
+    <div style="d-flex flex-column justify-content-start">
+      <table width="100%">
         <thead>
           <tr>
-            <th>票のタイプ</th>
-            <th></th>
-            <th>投票者の名前</th>
-            <th></th>
-          </tr>
+            <th width="10%"></th>
+            <th>お題</th>
+            <th>お題のジャンル</th>
+          </tr>          
         </thead>
-          <% [@answer_latest, @answer_a, @answer_b, @answer_c].each do |answers| %>
-          <tbody class="invisible">
-            <% answers.each do |answer| %>
-            <tr>
-              <% if answer.option == "1" %>
-                <td>
-                  <i class="fa-solid fa-user-large fa-2x" style="color:tomato;"></i> 
-                  <%= @topic.option1 %>派
-                </td>
-              <% elsif answer.option == "2" %>
-                <td>
-                  <i class="fa-solid fa-user-large fa-2x" style="color:cornflowerblue;"></i>
-                  <%= @topic.option2 %>派
-                </td>
-              <% else %>
-                <td>
-                  <i class="fa-solid fa-user-large fa-2x" style="color:yellowgreen;"></i>
-                  どちらでもない派
-                </td>
-              <% end %>
-              <td>
-                <div class='arrow_box'>
-                  <%= answer.answer_content %>
-                </div>
-              </td>
-              <td><%= answer.user.name %>さん</td>
-              <td>
-                <% if answer.user == current_user %>
-                  <%= link_to public_topic_answer_path(@topic, answer), class:"btn btn-outline-danger rounded-pill", method: :delete, "data-confirm" => "削除しますか？" do %>
-                    <i class="fa-regular fa-trash-can"></i>
-                  <% end %>        
-                <% end %>
-              </td>
-            </tr>
-            <% end %>
-          </tbody>
-          <% end %>
-      </table>
-    <% end %>
-    
-    <!--current_userと紐づいている回答がなければ、投票フォームを表示する（投票回数を１回に制限）-->
-    <% unless @user_answer.present? %>  
-    
-      <h4 style="margin-top:20px"><span class="marker-red">投票してみる！</span></h4>
-      <%= form_with(model: [@topic, @answer], url: public_topic_answers_path(@topic.id), method: :post, local: true) do |f| %>
-        <table>
-          <tbody>
-            <ul class="list-unstyled">
-              <li><b>票を一つ選んでください。</b></li>
-              <li>
-                <ul><%= @alart %></ul>
-                <ul>
-                  <%= f.radio_button :option, 1 %>
-                  <%= @topic.option1 %>派
-                </ul>
-              </li>
-              <li>          
-                <ul>
-                  <%= f.radio_button :option, 2 %>
-                  <%= @topic.option2 %>派
-                </ul>          
-              </li>
-              <li>          
-                <ul>
-                  <%= f.radio_button :option, 0 %>
-                  どちらでもない派
-                </ul>          
-              </li><br>
+        <tbody>
+          <tr>
+            <td>
+              <i class="fa-solid fa-face-grin fa-5x" style="color:peachpuff;"></i><br>
+              <%= link_to @user.name, public_user_path(@user.id) %>さん</td>
+            <td>
+              <span class="balloon2-left"><%= @topic.topic_title %></span>
+            </td>
+            <td><%= @topic.genre.name %></td>
+          </tr>
+        </tbody>
+      </table><br> 
+      
+      <!--投票結果のプログレスバー-->
+      <% unless (@count_a + @count_b + @count_c) == 0 %>
+        <% sum = @count_a.to_f + @count_b.to_f + @count_c %>
+        <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <div class="progress" style="height: 40px;">
+              <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: <%= @count_a / sum * 100 %>%; background-color: tomato">
+                <%= @topic.option1 %> <%= (@count_a / sum * 100).round %>%
+              </div>
+              <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: <%= @count_b / sum * 100 %>%; background-color: cornflowerblue">
+                <%= @topic.option2 %> <%= (@count_b / sum * 100).round %>%
+              </div>
+              <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: <%= @count_c / sum * 100 %>%; background-color: yellowgreen">
+                どちらでもない <%= (@count_c / sum * 100).round %>%
+              </div>
+            </div>
+          </div>
+        </div><br>
+      
+        <div class="vote-list">
+         <p>
+           <span class="col"><%= @topic.option1 %>派</span>：<%= @count_a %>票<br>
+           <span class="col"><%= @topic.option2 %>派</span>：<%= @count_b %>票<br>
+           <span class="col">どちらでもない派</span>：<%= @count_c %>票<br>
+         </p>
+       </div>
   
-              <li><b>あなたのご意見</b></li>
-              <li>
-                <%= f.text_area :answer_content, rows: '5', placeholder: "ご意見や理由はこちらに書いてください。", class:"w-100" %>
-                <%= f.submit "OK" %>
-              </li>
-            </ul>
-          </tbody>
-        <table>
+  
+        <!--票のタイプごとに表示させるアイコン-->
+        <div class="answer-head">
+          <h4 style="margin-top:20px"><span class="marker-green">投票者のご意見</span></h4>
+          <ul class="answer-nav">
+            <li onclick="showOption0()">
+              <i class="fa-solid fa-circle-left fa-2x" style="color:tan;"></i>
+            </li>          
+            <li onclick="showOption1()">
+              <i class="fa-solid fa-user-large fa-2x" style="color:tomato;"></i> 
+              <%= @topic.option1 %>派
+            </li>
+            <li onclick="showOption2()">
+              <i class="fa-solid fa-user-large fa-2x" style="color:cornflowerblue;"></i>
+              <%= @topic.option2 %>派            
+            </li>
+            <li onclick="showOption3()">
+              <i class="fa-solid fa-user-large fa-2x" style="color:yellowgreen;"></i>
+              どちらでもない派            
+            </li>
+          </ul>
+        </div>
+        
+        <table id="answer-table" class="table">
+          <thead>
+            <tr>
+              <th>票のタイプ</th>
+              <th></th>
+              <th>投票者の名前</th>
+              <th></th>
+            </tr>
+          </thead>
+            <% [@answer_latest, @answer_a, @answer_b, @answer_c].each do |answers| %>
+            <tbody class="invisible">
+              <% answers.each do |answer| %>
+              <tr>
+                <% if answer.option == "1" %>
+                  <td>
+                    <i class="fa-solid fa-user-large fa-2x" style="color:tomato;"></i> 
+                    <%= @topic.option1 %>派
+                  </td>
+                <% elsif answer.option == "2" %>
+                  <td>
+                    <i class="fa-solid fa-user-large fa-2x" style="color:cornflowerblue;"></i>
+                    <%= @topic.option2 %>派
+                  </td>
+                <% else %>
+                  <td>
+                    <i class="fa-solid fa-user-large fa-2x" style="color:yellowgreen;"></i>
+                    どちらでもない派
+                  </td>
+                <% end %>
+                <td>
+                  <div class='arrow_box'>
+                    <%= answer.answer_content %>
+                  </div>
+                </td>
+                <td><%= answer.user.name %>さん</td>
+                <td>
+                  <% if answer.user == current_user %>
+                    <%= link_to public_topic_answer_path(@topic, answer), class:"btn btn-outline-danger rounded-pill", method: :delete, "data-confirm" => "削除しますか？" do %>
+                      <i class="fa-regular fa-trash-can"></i>
+                    <% end %>        
+                  <% end %>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+            <% end %>
+        </table>
       <% end %>
-    <% end %>
+      
+      <!--current_userと紐づいている回答がなければ、投票フォームを表示する（投票回数を１回に制限）-->
+      <% unless @user_answer.present? %>  
+      
+        <h4 style="margin-top:20px"><span class="marker-red">投票してみる！</span></h4>
+        <%= form_with(model: [@topic, @answer], url: public_topic_answers_path(@topic.id), method: :post, local: true) do |f| %>
+          <table>
+            <tbody>
+              <ul class="list-unstyled">
+                <li><b>票を一つ選んでください。</b></li>
+                <li>
+                  <ul><%= @alart %></ul>
+                  <ul>
+                    <%= f.radio_button :option, 1 %>
+                    <%= @topic.option1 %>派
+                  </ul>
+                </li>
+                <li>          
+                  <ul>
+                    <%= f.radio_button :option, 2 %>
+                    <%= @topic.option2 %>派
+                  </ul>          
+                </li>
+                <li>          
+                  <ul>
+                    <%= f.radio_button :option, 0 %>
+                    どちらでもない派
+                  </ul>          
+                </li><br>
+    
+                <li><b>あなたのご意見</b></li>
+                <li>
+                  <%= f.text_area :answer_content, rows: '5', placeholder: "ご意見や理由はこちらに書いてください。", class:"w-100" %>
+                  <%= f.submit "OK" %>
+                </li>
+              </ul>
+            </tbody>
+          <table>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
 
