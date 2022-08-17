@@ -1,10 +1,6 @@
 class Public::TopicsController < ApplicationController
   before_action :authenticate_user!
-  
-  #ログインしている場合、投稿可能
-  #before_action :authenticate_user!, only: [:new]
-  #skip_before_action :login_required, only: [:index, :show]
-  
+
   def index
     @user = current_user
     @topic = Topic.new
@@ -51,14 +47,10 @@ class Public::TopicsController < ApplicationController
     @topic.user_id = current_user.id
 
     if @topic.save
-      
-      flash[:notice] = "あなたのお題ができました。" 
-      redirect_to public_topic_path(@topic.id)
-    else
-      flash[:notice] = "お題が作成できませんでした。" 
-      @user = current_user
-      @topics = Topic.all
+      flash[:notice] = "お題が投稿できました！" 
       redirect_to public_topics_path
+    else
+      render :new
     end
   end
   

@@ -168,3 +168,7 @@
     line-height: 19px;
     font-weight: bold;
 }
+
+.field_with_errors {
+  display: contents;
+}

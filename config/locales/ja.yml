@@ -58,3 +58,32 @@ ja:
       not_saved:
         one: "エラーが発生したため %{resource} は保存されませんでした:"
         other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした:"
+  
+  activerecord:
+    errors:
+      models:
+        topic:
+          attributes:
+            topic_title: 
+              blank: "　　　お題が未記入です。" 
+            option1:
+              blank: "　選択肢１が未記入です。"
+            option2:
+              blank: "　選択肢２が未記入です。"
+              
+    models:
+      user: ユーザー
+      topic:
+      genre: ジャンル
+      answer: 
+    attributes:
+      user:
+        name: 名前
+        email: メールアドレス
+      topic:
+        topic_title: お題
+        option1: 選択肢１
+        option2: 選択肢２
+      genre:
+        name: ジャンル名
+      answer_content: 回答内容

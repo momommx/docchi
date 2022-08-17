@@ -4,10 +4,11 @@ class Topic < ApplicationRecord
   belongs_to :genre 
   belongs_to :user
   
-  validates :topic_title, presence: true
-  validates :option1,     presence: true
-  validates :option2,     presence: true
-  
+  validates :topic_title, presence: true, on: :create
+  validates :option1,     presence: true, on: :create
+  validates :option2,     presence: true, on: :create
+
+   
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
