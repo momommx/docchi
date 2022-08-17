@@ -1,8 +1,9 @@
-<p>public/users/show.html.erb</p>
 <div class="container">
-    <div class="mt-4">
-        <h4><span class ="marker-green"><%= @user.name %>さんのページ</span></h4>
-        <div class="mb-2 d-md-flex justify-content-md-end">
+    <div class="row align-items-center mt-3">
+        <div class="mr-auto py-1 mb-4 header-bubble" style="width:20%">
+           <h5><b><%= @user.name %>さんのページ</b></h5>
+        </div>
+        <div class="col d-md-flex justify-content-md-end">
             <% if @user.id == current_user.id %>    
                 <%= link_to "いいねしたお題", favorites_public_user_path(@user), class:"btn btn-success rounded-pill" %>
             <% end %>

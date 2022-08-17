@@ -1,28 +1,22 @@
-public/topics/index.html.erb
 <%= flash[:notice] %>
 <div class="container">
-  <div style="d-flex flex-column justify-content-start">
-
-    
-    <div class='row'>
-      <div class='col-12 clearfix mx-auto'>
-        <div class="float-left">
-          <h2>お題一覧</h2>
-        </div>
-        <div class="float-right">     
-          <%= link_to new_public_topic_path, class: 'btn btn-success btn-lg rounded-pill' do %>
-            <i class="fa-regular fa-pen-to-square"></i>
-            お題を作る
-          <% end %>
-        </div><br><br>
-        <div class="text-left">
-          <%= link_to '新着順', public_topics_path %>
-          | <%= link_to 'いいねの多い順', public_topics_path(sort: "favorite_count") %>
-          | <%= link_to '発言の多い順', public_topics_path(sort: "answer_count") %>
-        </div>
-        
-        <%= render 'index', topics: @topics, user: @user %>
-      </div>
-    </div>　
+  <div class='row align-items-center mt-3'>
+    <div class="float-left mr-auto py-1 mb-4 header-bubble" style="width:15%">
+      <h4><b>お題一覧</b></h4>
+    </div>
+    <div class="col d-md-flex mb-3 justify-content-md-end">
+      <%= link_to new_public_topic_path, class: 'btn btn-success btn-lg rounded-pill' do %>
+        <i class="fa-regular fa-pen-to-square"></i>
+        お題を作る
+      <% end %>
+    </div>
   </div>
+  <div class="row">
+    <div class="col d-md-flex mb-1 justify-content-md-end">
+      <%= link_to '新着順', public_topics_path %>
+      | <%= link_to 'いいねの多い順', public_topics_path(sort: "favorite_count") %>
+      | <%= link_to '発言の多い順', public_topics_path(sort: "answer_count") %>
+    </div>
+  </div>
+  <%= render 'index', topics: @topics, user: @user %>
 </div>
