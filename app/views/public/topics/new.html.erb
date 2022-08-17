@@ -1,27 +1,26 @@
-<p>public/topics/new.html.erb</p>
 <div class="container">
   <div class="mt-4">
-    <h4><span class ="marker-red">お題を作る！</span></h4><br>
+    <h4><span class ="marker-red"><b>お題を作る！</b></span></h4><br>
     
     <%= form_with model: @topic, url: public_topics_path, method: :post, local: true do |f| %>
       
-      <div class="form-group row">
-        <%= f.label :topic_title, "お題" %>&emsp;&emsp;&nbsp;
+      <div class="form-group row mb-3">
+        <%= f.label :topic_title, "お題", {class: 'col-sm-2 col-form-label'} %>
         <%= f.text_field :topic_title, :size=>"70", placeholder: "賛成/反対 または A/B かで答えられるお題を書いてください。" %>
       </div> 
       
       <div class="form-group row">
-        <%= f.label :option1, "選択肢１" %>&nbsp;
+        <%= f.label :option1, "選択肢１", {class: 'col-sm-2 col-form-label'} %>
         <%= f.text_field :option1, :size=>"40" %>派
       </div> 
       
       <div class="form-group row">
-        <%= f.label :option2, "選択肢２" %>&nbsp;
+        <%= f.label :option2, "選択肢２", {class: 'col-sm-2 col-form-label'} %>
         <%= f.text_field :option2, :size=>"40" %>派
       </div> 
       
       <div class="form-group row">
-        <%= f.label :genre, "お題のジャンル" %>
+        <%= f.label :genre, "お題のジャンル", {class: 'col-sm-2 col-form-label'} %>
         <%= f.collection_select :genre_id, Genre.all, :id, :name %>
       </div>  
 
