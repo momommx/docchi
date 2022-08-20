@@ -1,7 +1,8 @@
-admin/users/index.html.erb
 <div class="container">
   <div class="row my-3 mx-auto">
-    <h4>ユーザー一覧</h4>
+    <div class="float-left mr-auto py-1 mb-4 header-bubble" style="width:20%">
+      <h4><b>ユーザー一覧</b></h4>
+    </div>
     
     <table class="table table-striped">
       <thead>
@@ -32,7 +33,7 @@ admin/users/index.html.erb
               <% end %>
             </td>
             <td>
-              <%= link_to "ステータスの変更", edit_admin_user_path(user.id), class: "btn btn-success" %>
+              <%= link_to "ステータスの変更", edit_admin_user_path(user.id), class: "btn btn-bd-purple rounded-pill" %>
             </td>
           </tr>
         <% end %>

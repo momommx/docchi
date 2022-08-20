@@ -172,3 +172,11 @@
 .field_with_errors {
   display: contents;
 }
+
+.btn-bd-orange {
+  background: coral; color:#FFFFFF;
+}
+
+.btn-bd-purple {
+  background: orchid; color:#FFFFFF;
+}
