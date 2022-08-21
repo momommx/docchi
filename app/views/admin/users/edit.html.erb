@@ -1,10 +1,8 @@
  /admin/users/:id/edit
 <div class="container">
-  <div class="d-flex flex-column justify-content-start">
-    
-    <h4 style="width:30%; margin-top: 20px">
-      <span class ="marker-green"><%= @user.name %>さんの登録編集ページ</span>
-    </h4>
+  <div class="mr-auto py-2 mb-4 header-bubble" style="width:40%">
+    <b><%= @user.name %>さんの登録編集ページ</b>
+  </div>
     
     <%= form_with model: @user, url: admin_user_path(@user), method: :patch, local: true do |f| %>
 
