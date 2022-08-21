@@ -16,13 +16,21 @@
       <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
           <li class="nav-item" style="list-style: none">
-            <%= link_to "マイページ", public_user_path(current_user), class: "nav-link text-light" %>
+            <div class="icons">
+              <%= link_to public_user_path(current_user), class: "nav-link text-light" do %>
+                <i class="fa-regular fa-bookmark"></i> マイページ
+              <% end %>
+            </div>
           </li>
           <li class="nav-item" style="list-style: none">
-            <%= link_to "お題一覧", public_topics_path, class: "nav-link text-light" %>
+            <%= link_to public_topics_path, class: "nav-link text-light" do %>
+              <i class="fa-solid fa-table-list"></i> お題一覧
+            <% end %>
           </li>
           <li class="nav-item" style="list-style: none">
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
+            <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-light' do %>
+              <i class="fa-solid fa-right-from-bracket"></i> ログアウト
+            <% end %>
           </li>
           
           <!-- 検索バー -->
@@ -41,10 +49,14 @@
           
         <% else %>
           <li class="nav-item ml-auto" style="list-style: none">
-            <%= link_to "ユーザー登録", new_user_registration_path, class: 'nav-link text-light' %>
+            <%= link_to new_user_registration_path, class: 'nav-link text-light' do %>
+              <i class="fa-solid fa-user-plus"></i> ユーザー登録
+            <% end %>
           </li>
           <li class="nav-item" style="list-style: none">
-            <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-light' %>
+            <%= link_to new_user_session_path, class: 'nav-link text-light' do %>
+              <i class="fa-solid fa-right-to-bracket"></i> ログイン
+            <% end %>  
           </li>
         <% end %>
       </ul>
