@@ -6,7 +6,7 @@
 </svg>
 
 <!--フラッシュメッセージ-->
-<div style="width:50%; margin:15px auto;">
+<div style="width:50%; margin: 15px auto;">
   <% if flash[:danger] %>
     <div class="alert alert-danger" style="text-align: center;" role="alert">
       <svg class="bi flex-shrink-0 me-2" width="24" height="24"><use xlink:href="#exclamation-triangle-fill"/></svg>
@@ -15,7 +15,7 @@
   <% end %>
 </div>
 
-<div style="width:30%; margin:15px auto;">
+<div style="width:30%; margin: 15px auto;">
   <% if flash[:success] %>
     <div class="alert alert-success" style="text-align: center; font-weight: bold;" role="alert">
       <%= flash[:success] %>
@@ -67,13 +67,14 @@
           </div>
         </div><br>
       
-        <div class="vote-list">
-         <p>
-           <span class="col"><%= @topic.option1 %>派</span>：<%= @count_a %>票<br>
-           <span class="col"><%= @topic.option2 %>派</span>：<%= @count_b %>票<br>
-           <span class="col">どちらでもない派</span>：<%= @count_c %>票<br>
-         </p>
-       </div>
+        <!--投票の集計結果テーブル-->
+        <div class="vote-list" style="margin-bottom: 50px;">
+          <p>
+            <span class="col"><%= @topic.option1 %>派</span>：<%= @count_a %>票<br>
+            <span class="col"><%= @topic.option2 %>派</span>：<%= @count_b %>票<br>
+            <span class="col">どちらでもない派</span>：<%= @count_c %>票<br>
+          </p>
+        </div>
   
   
         <!--票のタイプごとに表示させるアイコン-->
@@ -98,12 +99,13 @@
           </ul>
         </div>
         
+        <!--投票者のご意見テーブル-->
         <table id="answer-table" class="table">
           <thead>
             <tr>
-              <th>票のタイプ</th>
+              <th style="width: 130px">票のタイプ</th>
               <th></th>
-              <th>投票者の名前</th>
+              <th style="width: 90px">名前</th>
               <th></th>
             </tr>
           </thead>
@@ -113,17 +115,17 @@
               <tr>
                 <% if answer.option == "1" %>
                   <td>
-                    <i class="fa-solid fa-user-large fa-2x" style="color:tomato;"></i> 
+                    <i class="fa-solid fa-user-large fa-2x" style="color:tomato;"></i><br>
                     <%= @topic.option1 %>派
                   </td>
                 <% elsif answer.option == "2" %>
                   <td>
-                    <i class="fa-solid fa-user-large fa-2x" style="color:cornflowerblue;"></i>
+                    <i class="fa-solid fa-user-large fa-2x" style="color:cornflowerblue;"></i><br>
                     <%= @topic.option2 %>派
                   </td>
                 <% else %>
                   <td>
-                    <i class="fa-solid fa-user-large fa-2x" style="color:yellowgreen;"></i>
+                    <i class="fa-solid fa-user-large fa-2x" style="color:yellowgreen;"></i><br>
                     どちらでもない派
                   </td>
                 <% end %>
