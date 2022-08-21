@@ -11,7 +11,7 @@
 <% end %>
 
 <div class="container">
-  <div class="mr-auto py-2 mb-4 header-bubble" style="width:42%"><b>ユーザーの方はこちらからログインしてください。</b></div>
+  <div class="mr-auto py-2 mb-5 header-bubble" style="width:42%"><b>ユーザーの方はこちらからログインしてください。</b></div>
 
   <%= form_with model: @user, url: user_session_path, local: true do |f| %>
     <table class="table table-borderless"  style="margin-bottom:30px;">
@@ -38,7 +38,7 @@
     </table>
   <% end %>
 
-  <div class="mr-auto py-2 mb-4 header-bubble" style="width:42%"><b>初めて利用する方</b></div>
+  <div class="mr-auto py-2 my-5 header-bubble" style="width:42%"><b>初めて利用する方</b></div>
   <div class="col d-md-flex justify-content-md-start">
     <h6>
       <%= link_to "こちら", new_user_registration_path %>からユーザー登録を行ってください。
