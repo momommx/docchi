@@ -8,9 +8,9 @@
       <tbody>
         <thead>
           <tr>
-            <th>投稿日時</th>
+            <th width="15%">投稿日時</th>
             <th>内容</th>
-            <th>作成者</th>
+            <th width="10%">作成者</th>
             <th></th>
           </tr>
         </thead>
@@ -20,7 +20,9 @@
             <td><%= answer.answer_content %></td>
             <td><%= answer.user.name %>さん</td>
             <td>
-              <%= link_to '削除', admin_answer_path(answer.id), class:"btn btn-outline-danger rounded-pill", method: :delete, "data-confirm" => "削除しますか？" %>
+              <%= link_to admin_answer_path(answer.id), class:"btn btn-outline-danger rounded-pill", method: :delete, "data-confirm" => "削除しますか？" do %>
+                <i class="fa-regular fa-trash-can"></i>
+              <% end %>             
             </td>
           </tr>
         <% end %>

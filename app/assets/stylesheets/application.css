@@ -31,14 +31,14 @@
 }
 
 
-.balloon2-left {
+.balloon-topic {
   position: relative;
   display: inline-block;
   margin: 1.5em 0 1.5em 15px;
   padding: 7px 10px;
   min-width: 120px;
   max-width: 100%;
-  color: #555;
+  color: #3D3B27;
   font-size: 17px;
   font-weight:bold;
   background: #FFF;
@@ -47,7 +47,7 @@
   border-radius: 10px;
 }
 
-.balloon2-left:before {
+.balloon-topic:before {
   content: "";
   position: absolute;
   top: 50%;
@@ -59,7 +59,7 @@
   border-radius: 10px;
 }
 
-.balloon2-left:after {
+.balloon-topic:after {
   content: "";
   position: absolute;
   top: 50%;
@@ -71,7 +71,7 @@
   border-radius: 10px;
 }
 
-.balloon2-left p {
+.balloon-topic p {
   margin: 0;
   padding: 0;
 }

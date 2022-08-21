@@ -1,8 +1,7 @@
-<div class="container">admin/sessions/new.html.erb<br>
-
-  <h5 class="bg-light text-dark text-center" style="width:30%; margin-top: 30px">
+<div class="container">
+  <div class="mr-auto py-2 mb-4 header-bubble" style="width:42%"><b>
     管理者ログイン
-  </h5>
+  </b></div>
 
 　<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <table class="table table-borderless">
@@ -22,7 +21,7 @@
         <tr>
           <td></td>
           <td style="width:20%">
-            <%= f.submit "ログイン", class: "btn btn-primary" %>
+            <%= f.submit "ログイン", class: "btn btn-primary rounded-pill" %>
           </td>
         </tr>
       </tbody>

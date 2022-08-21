@@ -1,17 +1,19 @@
 <div class="container">
-  <div class="row my-3">
-    <h5>
-      <% if params[:word].present? && params[:genre_id].blank? %>
-        「<%= params[:word] %>」
-      <% elsif params[:genre_id].present? && params[:word].blank?%>
-        「<%= @genre.name %>」
-      <% elsif params[:genre_id].present? && params[:word].present?%>
-        「<%= params[:word] %>」 と 「<%= @genre.name %>」
-      <% else %>
-        「　」
-      <% end %>      
-        の検索結果： <%= @count %>件
-    </h5>
+  <div class="row mt-3">
+    <div class="mr-auto py-1 mb-4 header-bubble" style="width:50%">
+      <h5><b>
+        <% if params[:word].present? && params[:genre_id].blank? %>
+          「<%= params[:word] %>」
+        <% elsif params[:genre_id].present? && params[:word].blank?%>
+          「<%= @genre.name %>」
+        <% elsif params[:genre_id].present? && params[:word].present?%>
+          「<%= params[:word] %>」 と 「<%= @genre.name %>」
+        <% else %>
+          「　」
+        <% end %>      
+          の検索結果： <%= @count %>件
+      </b></h5>
+    </div>
     
     <table class="table table-hover table-inverse">
       <tbody>

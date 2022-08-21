@@ -11,6 +11,7 @@
     <div class="alert alert-danger" style="text-align: center;" role="alert">
       <svg class="bi flex-shrink-0 me-2" width="24" height="24"><use xlink:href="#exclamation-triangle-fill"/></svg>
       <%= flash[:danger] %>
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
     </div>
   <% end %>
 </div>
@@ -19,6 +20,7 @@
   <% if flash[:success] %>
     <div class="alert alert-success" style="text-align: center; font-weight: bold;" role="alert">
       <%= flash[:success] %>
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
     </div>  
   <% end %>
 </div>
@@ -41,7 +43,7 @@
               <i class="fa-solid fa-face-grin fa-5x" style="color:peachpuff;"></i><br>
               <%= link_to @user.name, public_user_path(@user.id) %>さん</td>
             <td>
-              <span class="balloon2-left"><%= @topic.topic_title %></span>
+              <span class="balloon-topic"><%= @topic.topic_title %></span>
             </td>
             <td><%= @topic.genre.name %></td>
           </tr>

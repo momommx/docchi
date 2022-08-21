@@ -1,38 +1,39 @@
 <header>
-  <nav class="navbar navbar-expand navbar-dark bg-warning navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <%= link_to admin_path do %>
-          <%#= image_tag 'logo.png' %>
-        <% end %>
-      </div>  
-      
+  <nav class="navbar navbar-expand-lg navbar-light bg-warning navbar-fixed-top">
+    <div class="navbar-brand">
+      <%= link_to admin_path do %>
+        <%= image_tag 'logo.png', size: '70x70' %>
+      <% end %>
+    </div>  
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">      
+      <ul class="navbar-nav ml-auto">
         <% if admin_signed_in? %>
-          <ul class="navbar-nav">
-            <li class="nav-item" style="list-style: none">
-              <%= link_to "回答一覧", admin_answers_path, class: 'nav-link text-light' %>
-            </li>
-            <li class="nav-item" style="list-style: none">
-              <%= link_to "ユーザー一覧", admin_users_path, class: 'nav-link text-light' %>
-            </li>
-            <li class="nav-item"  style="list-style: none">
-              <%= link_to "ジャンル一覧", admin_genres_path, class: 'nav-link text-light' %>
-            </li>
-            <li class="nav-item"  style="list-style: none">
-              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
-            </li>
+          <li class="nav-item" style="list-style: none">
+            <%= link_to "回答一覧", admin_answers_path, class: 'nav-link text-light' %>
+          </li>
+          <li class="nav-item" style="list-style: none">
+            <%= link_to "ユーザー一覧", admin_users_path, class: 'nav-link text-light' %>
+          </li>
+          <li class="nav-item"  style="list-style: none">
+            <%= link_to "ジャンル一覧", admin_genres_path, class: 'nav-link text-light' %>
+          </li>
+          <li class="nav-item"  style="list-style: none">
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
+          </li>
         <% else %>
-            <li class="nav-item" style="list-style: none">
-              <%= link_to "お題一覧", public_topics_path, class: "nav-link text-light" %>
-            </li>
-            <li class="nav-item" style="list-style: none">
-              <%= link_to "ユーザー登録", new_user_registration_path, class: 'nav-link text-light' %>
-            </li>
-            <li class="nav-item" style="list-style: none">
-              <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-light' %>
-            </li>
-          </ul>
+          <li class="nav-item ml-auto" style="list-style: none">
+            <%= link_to "お題一覧", public_topics_path, class: "nav-link text-light" %>
+          </li>
+          <li class="nav-item" style="list-style: none">
+            <%= link_to "ユーザー登録", new_user_registration_path, class: 'nav-link text-light' %>
+          </li>
+          <li class="nav-item" style="list-style: none">
+            <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-light' %>
+          </li>
         <% end %>
-    </div>
+    </ul>
   </nav>
 </header>
