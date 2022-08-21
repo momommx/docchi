@@ -31,7 +31,10 @@
               <% end %>
             </td>
             <td>
-              <%= link_to "ステータスの変更", edit_admin_user_path(user.id), class: "btn btn-bd-purple rounded-pill" %>
+              <!--ゲストユーザー(id:1)の時はボタン非表示-->
+              <% unless user.id == 1 %>
+                <%= link_to "ステータスの変更", edit_admin_user_path(user.id), class: "btn btn-bd-purple rounded-pill" %>
+              <% end %>
             </td>
           </tr>
         <% end %>
