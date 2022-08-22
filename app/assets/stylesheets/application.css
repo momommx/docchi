@@ -220,7 +220,7 @@
  z-index: 2;
 }
 
-/*ジャンル検索セレクトボックス*/
+/*ジャンル検索のセレクトボックス*/
 .collection-select {
  width: 90px;
  background: transparent;
@@ -230,3 +230,11 @@
  top: 33px;
  border-radius: 0.75em;
 }
+
+
+.odai-search {
+ border-radius: 50em;
+ font-size: 15px;
+ line-height: 2;
+ padding: 18 24 18 55.2 ;
+  }

@@ -56,8 +56,8 @@ ja:
       not_found: 'は見つかりませんでした。'
       not_locked: 'は凍結されていません。'
       not_saved:
-        one: "エラーが発生したため %{resource} は保存されませんでした:"
-        other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした:"
+        one: "エラーが発生したため %{resource} は保存されませんでした。"
+        other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした。"
   
   activerecord:
     errors:
@@ -65,13 +65,13 @@ ja:
         topic:
           attributes:
             genre:
-              required: "　ジャンルが未記入です。"
+              required: "　ジャンルを入力してください。"
             topic_title: 
-              blank: "　　　お題が未記入です。" 
+              blank: "　　　お題を入力してください。" 
             option1:
-              blank: "　選択肢１が未記入です。"
+              blank: "　選択肢１を入力してください。"
             option2:
-              blank: "　選択肢２が未記入です。"
+              blank: "　選択肢２を入力してください。"
 
     models:
       user: ユーザー
