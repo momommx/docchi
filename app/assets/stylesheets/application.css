@@ -227,5 +227,6 @@
  border-color: transparent;
  position: absolute;
  right:  100px;
- top: 32px; 
+ top: 32px;
+ border-radius: 0.75em;
 }
