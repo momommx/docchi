@@ -32,16 +32,10 @@
             <% end %>
           </li>
         <% else %>
-          <li class="nav-item ml-auto" style="list-style: none">
-            <%= link_to public_topics_path, class: "nav-link text-light" do %>
-              <i class="fa-solid fa-table-list"></i> お題一覧
-            <% end %>
-          </li>
           <li class="nav-item" style="list-style: none">
             <%= link_to new_user_registration_path, class: 'nav-link text-light' do %>
               <i class="fa-solid fa-user-plus"></i> ユーザー登録
             <% end %>          
-          
           </li>
           <li class="nav-item" style="list-style: none">
             <%= link_to new_user_session_path, class: 'nav-link text-light' do %>
