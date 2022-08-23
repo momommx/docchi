@@ -2,7 +2,7 @@ class Admin::AnswersController < ApplicationController
   before_action :authenticate_admin!
   
   def index
-    @answers = Answer.page(params[:page])
+    @answers = Answer.page(params[:page]).order(created_at: :desc)
   end
   
   def destroy
