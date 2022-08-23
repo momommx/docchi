@@ -87,8 +87,6 @@ ja:
         option1: 選択肢１
         option2: 選択肢２
         genre: ジャンル
-
-ja:
   views:
     pagination:
       first: "&laquo; 最初"
