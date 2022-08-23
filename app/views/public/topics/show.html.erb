@@ -39,7 +39,7 @@
         </thead>
         <tbody>
           <tr>
-            <td>
+            <td style="text-align: center;">
               <i class="fa-solid fa-face-grin fa-5x" style="color:peachpuff;"></i><br>
               <%= link_to @user.name, public_user_path(@user.id) %>さん</td>
             <td>
@@ -69,7 +69,7 @@
           </div>
         </div><br>
       
-        <!--投票の集計結果テーブル-->
+        <!--投票の集計結果表-->
         <div class="vote-list" style="margin-bottom: 50px;">
           <p>
             <span class="col"><%= @topic.option1 %>派</span>：<%= @count_a %>票<br>
@@ -79,7 +79,7 @@
         </div>
   
   
-        <!--票のタイプごとに表示させるアイコン-->
+        <!--票タイプごとに表示させるアイコン-->
         <div class="answer-head">
           <h4 style="margin-top:20px"><span class="marker-green">投票者のご意見</span></h4>
           <ul class="answer-nav" >
@@ -105,7 +105,7 @@
         <table id="answer-table" class="table">
           <thead>
             <tr>
-              <th style="width: 130px">票のタイプ</th>
+              <th style="width: 155px">票のタイプ</th>
               <th></th>
               <th style="width: 90px">名前</th>
               <th></th>
@@ -116,17 +116,17 @@
               <% answers.each do |answer| %>
               <tr>
                 <% if answer.option == "1" %>
-                  <td>
+                  <td style="text-align: center;">
                     <i class="fa-solid fa-user-large fa-2x" style="color:tomato;"></i><br>
                     <%= @topic.option1 %>派
                   </td>
                 <% elsif answer.option == "2" %>
-                  <td>
+                  <td style="text-align: center;">
                     <i class="fa-solid fa-user-large fa-2x" style="color:cornflowerblue;"></i><br>
                     <%= @topic.option2 %>派
                   </td>
                 <% else %>
-                  <td>
+                  <td style="text-align: center;">
                     <i class="fa-solid fa-user-large fa-2x" style="color:yellowgreen;"></i><br>
                     どちらでもない派
                   </td>
@@ -136,7 +136,7 @@
                     <%= answer.answer_content %>
                   </div>
                 </td>
-                <td><%= answer.user.name %>さん</td>
+                <td><%= link_to answer.user.name, public_user_path(answer.user.id) %>さん</td>
                 <td>
                   <% if answer.user == current_user %>
                     <%= link_to public_topic_answer_path(@topic, answer), class:"btn btn-outline-danger rounded-pill", method: :delete, "data-confirm" => "削除しますか？" do %>
