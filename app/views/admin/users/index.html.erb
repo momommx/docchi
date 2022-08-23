@@ -38,8 +38,12 @@
             </td>
           </tr>
         <% end %>
-        <%= paginate @users %>
       </tbody>
     </table>
   </div>
+</div>
+
+<!-- ページネーション -->
+<div class="pagination pagination-sm justify-content-center">
+  <%= paginate @users, theme: 'twitter-bootstrap-4' %>
 </div>
