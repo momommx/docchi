@@ -5,7 +5,10 @@
         </div>
         <div class="col d-md-flex justify-content-md-end">
             <% if @user.id == current_user.id %>    
-                <%= link_to "いいねしたお題", favorites_public_user_path(@user), class:"btn btn-success rounded-pill" %>
+                <%= link_to favorites_public_user_path(@user), class:"btn btn-bd-pink rounded-pill" do %>
+                  <i class="fa-regular fa-heart"></i>
+                  いいねしたお題
+                <% end %>
             <% end %>
         </div>
         <%= render partial: 'topics', locals: { topics: @topics, user: @user } %>
