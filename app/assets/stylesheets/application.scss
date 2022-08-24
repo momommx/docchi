@@ -196,7 +196,7 @@
  padding: 15px 30px 15px 30px;
  width: 80%;
  background-color: #fff; 
- color: #333; /* 文章色 */
+ color: #333;
  border: 1px solid #ccc;
  box-shadow: 1px 1px 1px #acacac;
 }
@@ -207,7 +207,7 @@
  right: 10px;
  height: 55px;
  width: 15px;
- border: 3px solid #555555; /*クリップ色 */
+ border: 3px solid #555555;
  background: none;
  border-radius: 12px;
  box-shadow: 1px 1px 2px #999;
@@ -224,7 +224,6 @@
  z-index: 2;
 }
 
-/*ジャンル検索のセレクトボックス*/
 .collection-select {
  width: 90px;
  background: transparent;
