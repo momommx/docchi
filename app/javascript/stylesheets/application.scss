@@ -1,10 +1,9 @@
 // @import '~bootstrap/scss/bootstrap';
 // @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 // @import '~bootstrap/scss/bootstrap';
-// @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
-
- .marker-red {
+.marker-red {
     background: linear-gradient(transparent 60%, #f5c4c4 60%);
     font-weight: 100;
 }
@@ -167,6 +166,7 @@
   display: contents;
 }
 
+
 .btn-bd-orange {
   background-color: coral; color:#FFFFFF;
 }
@@ -177,6 +177,11 @@
 
 .btn-bd-pink {
   background-color: #FF7774; color:#FFFFFF;
+}
+
+.btn:hover {
+    color: #FFFFFF;
+    text-decoration: none;
 }
 
 
