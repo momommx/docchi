@@ -220,3 +220,21 @@
  top: 33px;
  border-radius: 0.75em;
 }
+
+
+
+.flash-notifications {
+  font-weight: bold;
+  text-align: center;  
+
+  .notice {
+    color: #00A851;
+    background-color: #d4edda;
+  }
+
+  .alert {
+    color: #e83e8c;
+    background-color: #f8d7da;
+  }
+
+  }

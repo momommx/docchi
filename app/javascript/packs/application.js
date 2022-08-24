@@ -16,3 +16,11 @@ import '@fortawesome/fontawesome-free/js/all'
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+
+$(function(){
+  setTimeout("$('.notice').fadeOut('slow')", 3000);
+});
+$(function(){
+  setTimeout("$('.alert').fadeOut('slow')", 5000);
+});

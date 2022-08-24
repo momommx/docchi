@@ -4,7 +4,6 @@
     <% if @topic.errors.any? %>
       <div class="alert alert-danger mb-4" role="alert" style="width:50%"> 
         <%= @topic.errors.count %>件のエラーが起きています。
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
         <ul>
           <% @topic.errors.full_messages.each do |message| %>
             <li><%= message %></li>

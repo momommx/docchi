@@ -4,7 +4,7 @@
       <%= link_to root_path do %>
         <%= image_tag 'logo.png', size: '70x70' %>
       <% end %>
-    </div>  
+    </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -47,3 +47,10 @@
     </div>
   </nav>
 </header>
+
+<!--フラッシュメッセージ-->
+<div class="flash-notifications">
+  <% flash.each do |key, value| %>
+   <%= content_tag(:div, value, class: key) %>
+  <% end %>
+</div>
