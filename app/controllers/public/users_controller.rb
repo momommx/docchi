@@ -15,7 +15,9 @@ class Public::UsersController < ApplicationController
     favorites = Favorite.where(user_id: @user.id).pluck(:topic_id)
     @favorite_topics = Topic.find(favorites)
     
-
+    # ユーザーがお気に入り登録をした順に表示させる
+    @user = User.find(params[:id])
+    @favorite_topics = @user.favorites.order(created_at: "DESC").map{|favorite| favorite.topic}
   end
  
  
