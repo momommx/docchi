@@ -244,3 +244,42 @@
   }
 
   }
+  
+
+// Topページのボタン３つ (ゲスト、ログイン、会員登録用)
+  
+a.btn--red.btn--cubic {
+  border-bottom: 5px solid #bf1d00; // ボタンのふち色
+  color: #fff;
+  background-color: #ff6347;       // ボタンの表面色
+}
+a.btn--red.btn--cubic:hover {
+  margin-top: 3px;
+  border-bottom: 2px solid #bf1d00; // ボタンのふち色
+}
+
+a.btn--radius {
+  border-radius: 100vh;
+}
+
+
+a.btn--blue.btn--cubic {
+  border-bottom: 5px solid #2e4877; 
+  color: #fff;
+  background-color: #6495ed;       
+}
+a.btn--blue.btn--cubic:hover {
+  margin-top: 3px;
+  border-bottom: 2px solid #2e4877; 
+}
+
+
+a.btn--green.btn--cubic {
+  border-bottom: 5px solid #5e8019; 
+  color: #fff;
+  background-color: #9acd32;     
+}
+a.btn--green.btn--cubic:hover {
+  margin-top: 3px;
+  border-bottom: 2px solid #5e8019;
+}
