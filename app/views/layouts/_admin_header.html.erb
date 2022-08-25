@@ -51,6 +51,7 @@
 <!--フラッシュメッセージ-->
 <div class="flash-notifications">
   <% flash.each do |key, value| %>
-   <%= content_tag(:div, value, class: key) %>
+   <!--Devise 特定の(空欄にした)flashメッセージを無効にする記述-->
+   <%= content_tag :div, value, :class => "flash #{key}" unless value.blank? %>   
   <% end %>
 </div>
