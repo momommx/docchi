@@ -47,8 +47,7 @@ class Public::TopicsController < ApplicationController
     @topic.user_id = current_user.id
 
     if @topic.save
-      flash[:notice] = "お題が投稿できました！" 
-      redirect_to public_topics_path
+      redirect_to public_topics_path, notice: "お題が投稿できました！"
     else
       render :new
     end

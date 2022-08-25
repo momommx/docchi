@@ -19,9 +19,9 @@
   </div>
   <div class="row">
     <div class="col d-md-flex mb-1 justify-content-md-end">
-      <%= link_to '新着順', public_topics_path %>
-      | <%= link_to 'いいねの多い順', public_topics_path(sort: "favorite_count") %>
-      | <%= link_to '発言の多い順', public_topics_path(sort: "answer_count") %>
+      <%= link_to '新着順', public_topics_path %>&nbsp;
+      |&nbsp;<%= link_to 'いいねの多い順', public_topics_path(sort: "favorite_count") %>&nbsp;
+      |&nbsp;<%= link_to '回答の多い順', public_topics_path(sort: "answer_count") %>
     </div>
   </div>
   <%= render 'index', topics: @topics, user: @user %>
