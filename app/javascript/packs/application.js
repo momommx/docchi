@@ -17,6 +17,7 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+window.$ = window.jQuery = require('jquery');
 
 $(function(){
   setTimeout("$('.notice').fadeOut('slow')", 3000);
