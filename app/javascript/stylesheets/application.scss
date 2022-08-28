@@ -216,13 +216,22 @@
  z-index: 2;
 }
 
+
+.keyword_search {
+ height: 40px;
+ width: 380px;
+ text-indent: 1em;  // 先頭に字下げ(1文字分の空白)を挿入
+ border-radius: 100px;
+}
+
 .collection-select {
+ height: 40px;
  width: 90px;
  background: transparent;
  border-color: transparent;
  position: absolute;
- right:  105px;
- top: 33px;
+ right: 106px;
+ top: 27px;
  border-radius: 0.75em;
 }
 

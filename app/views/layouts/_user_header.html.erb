@@ -36,11 +36,9 @@
           <!-- 検索バー -->
           <div class="form-inline">
             <%= form_with url: search_path, local: true, method: :get do |f| %>
-              <%= f.text_field :word, placeholder: "　お題の検索", class: "rounded-pill", :size => "40" %>
-              
+              <%= f.text_field :word, placeholder: "お題の検索", class: "keyword_search" %>
               <%= f.collection_select :genre_id, Genre.all, :id, :name, {:prompt => "ジャンル"}, { "class" => "collection-select" } %>
-              
-              <%= f.button :type => "submit", class: "btn btn-success rounded-pill my-2 my-sm-0" do %>
+              <%= f.button :type => "submit", class: "btn btn-success rounded-pill align-baseline" do %>
                 <i class="fa-solid fa-magnifying-glass"></i>
                 検索
               <% end %>
