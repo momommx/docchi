@@ -10,7 +10,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <% if user_signed_in? %>  
-          <%= current_user.name %>さん、いらっしゃい！
+        <strong><%= current_user.name %>さん、いらっしゃい！</strong>
       <% end %>
    
       <ul class="navbar-nav ml-auto">
@@ -38,7 +38,7 @@
             <%= form_with url: search_path, local: true, method: :get do |f| %>
               <%= f.text_field :word, placeholder: "お題の検索", class: "keyword_search" %>
               <%= f.collection_select :genre_id, Genre.all, :id, :name, {:prompt => "ジャンル"}, { "class" => "collection-select" } %>
-              <%= f.button :type => "submit", class: "btn btn-success rounded-pill align-baseline" do %>
+              <%= f.button :type => "submit", class: "btn btn-outline rounded-pill align-baseline" do %>
                 <i class="fa-solid fa-magnifying-glass"></i>
                 検索
               <% end %>
