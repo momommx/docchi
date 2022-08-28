@@ -3,10 +3,10 @@
 
 <div class="container">
   <div class="mr-auto py-2 mb-4 header-bubble" style="width:50%">
-   <b>初めて利用する方</b>
+    <b>初めて利用する方</b>
   </div>
   
-  <font size="2"><p>※ユーザ登録なしでも閲覧可能です。<%= link_to "ゲストログイン", root_path %>からお入りください。</p> </font>
+  <font size="2"><p>※ユーザ登録なしでも閲覧可能です。<%= link_to "ゲストログイン", root_path %>からお入りください。</p></font>
   
   <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
 
