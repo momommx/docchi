@@ -118,7 +118,6 @@
     position:relative;
     background:#E0E0E0;
     padding:15px;
-    margin-right: 20px;
     text-align:left;
     color:#333333;
     font-size:14px;
@@ -181,7 +180,7 @@
     text-decoration: none;
 }
 
-
+//投票用紙
 .clip-box {
  position: relative;
  margin: 2em auto;
@@ -290,4 +289,10 @@ a.btn--green.btn--cubic {
 a.btn--green.btn--cubic:hover {
   margin-top: 3px;
   border-bottom: 2px solid #5e8019;
+}
+
+
+//投票者のご意見テーブル
+#answer-table {
+  vertical-align: middle;
 }
