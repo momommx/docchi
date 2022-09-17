@@ -223,14 +223,18 @@
  border-radius: 100px;
 }
 
+.form-inline {
+ position: relative;
+}
+
 .collection-select {
  height: 40px;
  width: 90px;
  background: transparent;
  border-color: transparent;
  position: absolute;
- right: 106px;
- top: 27px;
+ left: 280px;
+ top: 0.5px;
  border-radius: 0.75em;
 }
 
