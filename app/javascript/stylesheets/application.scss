@@ -146,6 +146,7 @@
 
 
 .vote-list p{
+    border-radius: 15px;
     background: #F5E9DF;
     padding: 10px;
     width: 35%;
@@ -302,4 +303,18 @@ a.btn--green.btn--cubic:hover {
 //投票者のご意見テーブル
 #answer-table td {
   vertical-align: middle;
+}
+
+//あなたのご意見フォーム
+.w-100 {
+  border: 1px solid #dee7ec;
+    
+}
+
+.ok-btn {
+  width: 100px;
+  border-radius: 100px;
+  border: none;
+  background-color: #dee7ec;
+  color: #889eab;
 }
