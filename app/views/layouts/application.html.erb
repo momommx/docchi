@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Docchi</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     
@@ -11,7 +11,7 @@
     <script src="https://kit.fontawesome.com/e7c35abe8c.js" crossorigin="anonymous"></script>
   </head>
 
-  <body>
+  <body style="padding-top: 6rem">
     <header>
       <% if request.fullpath.include? "/admin" %>
         <%= render 'layouts/admin_header' %>

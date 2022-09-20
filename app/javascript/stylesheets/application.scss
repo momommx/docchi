@@ -1,5 +1,13 @@
 @import '~bootstrap/scss/bootstrap';
 
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+}
+
 .marker-red {
     background: linear-gradient(transparent 60%, #f5c4c4 60%);
     font-weight: 100;
@@ -308,7 +316,6 @@ a.btn--green.btn--cubic:hover {
 //あなたのご意見フォーム
 .w-100 {
   border: 1px solid #dee7ec;
-    
 }
 
 .ok-btn {
@@ -318,3 +325,8 @@ a.btn--green.btn--cubic:hover {
   background-color: #dee7ec;
   color: #889eab;
 }
+
+.footer {
+  margin-top: auto;
+}
+
