@@ -1,6 +1,6 @@
-<p align="center">
-![logo-md](https://user-images.githubusercontent.com/106795266/192549805-1bcd7393-d382-48d0-a03c-6600e0e72870.png)
-</p>
+<div align="center">
+ <img src=https://user-images.githubusercontent.com/106795266/192549805-1bcd7393-d382-48d0-a03c-6600e0e72870.png >
+</div>
 
 # **Docchi**  ～あなたはどっち派？!
 
