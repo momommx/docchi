@@ -163,19 +163,19 @@
               <ul><%= @alart %></ul>
               <ul>
                 <%= f.radio_button :option, 1 %>
-                <%= @topic.option1 %>派
+                <%= f.label :option, "#{@topic.option1}", value: 1 %>派
               </ul>
             </li>
             <li>          
               <ul>
                 <%= f.radio_button :option, 2 %>
-                <%= @topic.option2 %>派
+                <%= f.label :option, "#{@topic.option2}", value: 2 %>派
               </ul>          
             </li>
             <li>          
               <ul>
                 <%= f.radio_button :option, 0 %>
-                どちらでもない派
+                <%= f.label :option, "どちらでもない派", value: 0 %>
               </ul>          
             </li><br>
 
