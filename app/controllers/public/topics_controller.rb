@@ -33,9 +33,9 @@ class Public::TopicsController < ApplicationController
 
     # A,B,C票ごとのテーブル表示アイコン
     @answer_latest = @answers.order('created_at DESC')      # 矢印アイコン選択時：新着順に表示
-    @answer_a = @answers.where(option: "1")
-    @answer_b = @answers.where(option: "2")
-    @answer_c = @answers.where(option: "0")
+    @answer_1 = @answers.where(option: "1")
+    @answer_2 = @answers.where(option: "2")
+    @answer_3 = @answers.where(option: "0")
   end
   
   def new
