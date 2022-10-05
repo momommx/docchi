@@ -25,3 +25,7 @@ $(function(){
 $(function(){
   setTimeout("$('.alert').fadeOut('slow')", 5000);
 });
+
+$('#edit-modal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
