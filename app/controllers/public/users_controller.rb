@@ -20,11 +20,27 @@ class Public::UsersController < ApplicationController
     @favorite_topics = @user.favorites.order(created_at: "DESC").map{|favorite| favorite.topic}
   end
  
- 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    if @user = User.find(params[:id])
+      @user.update(user_params)
+      redirect_to public_user_path(@user)
+    else
+      render :show
+    end
+  end
+
   private
- 
+
   def set_user
     @user = User.find(params[:id])
   end
- 
+
+  def user_params
+    params.require(:user).permit(:name)
+  end
+
 end

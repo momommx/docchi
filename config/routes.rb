@@ -29,7 +29,7 @@ Rails.application.routes.draw do
       resources :answers,   only: [:create, :destroy]
     end
     
-    resources :users, only: [:show] do
+    resources :users, only: [:show, :edit, :update] do
       member do
         get :favorites   #いいねした投稿一覧表示のための
       end
